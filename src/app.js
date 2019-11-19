@@ -6,9 +6,10 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-const { register } = require('./libs/users/controllers')
+const { register, login } = require('./libs/users/controllers')
 
 app.post('/user/register', register);
+app.post('/user/login', login)
 
 // error handling
 app.use((err, req, res, next) => {
