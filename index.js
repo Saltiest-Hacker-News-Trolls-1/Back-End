@@ -1,29 +1,36 @@
+require('dotenv').config()
+
 const app = require('./src/app');
 
-const mongoose = require('mongoose');
+// const Sequelize = require('sequelize');
 
-const devDB = `mongodb://localhost/todos_tdd_dev`;
+// const devDB = process.env.DEV_DATABASE_URL;
 
-const prodDB = `mongodb://${process.env.PROD_DB_USER}:${
-  process.env.PROD_DB_PASS
-}@ds161322.mlab.com:61322/todos_tdd_prod`;
+// const prodDB = process.env.PROD_DATABASE_URL
 
-const db = () => {
-  if (process.env.NODE_ENV === 'production') {
-    return prodDB;
-  }
-  return devDB;
-};
+// const db = () => {
+//     if (process.env.NODE_ENV === 'production') {
+//         return prodDB;
+//     }
+//     return devDB;
+// };
 
 const port = () => {
-  return process.env.PORT || 3003;
+    return process.env.PORT || 3003;
 };
 
-mongoose.connect(
-  db(),
-  () => console.log(`connected to ${db()}`)
-);
+// const sequelize = new Sequelize(db());
+
+// sequelize
+//     .authenticate()
+//     .then(() => {
+//         console.log(`Connection has been established successfully to ${db()}.`);
+//     })
+//     .catch(err => {
+//         console.error('Unable to connect to the database:', err);
+//     });
+
 
 app.listen(port(), () =>
-  console.log(`listening on http://localhost:${port()}`)
+    console.log(`listening on http://localhost:${port()}`)
 );
