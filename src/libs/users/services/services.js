@@ -22,11 +22,26 @@ const encryptPassword = () => async password => {
   return hash(password, 2);
 }
 
+const validateUser = UserModel => async (username, password) => {
+  let payload;
+  const foundUser = await UserModel.findOne({ username });
+  if (foundUser) {
+    const passwordsMatch = await compare(password, foundUser.password);
+    if (passwordsMatch) {
+      // payload = { id: foundUser.id, username: foundUser.username };
+      console.log('worked', foundUser)
+    }
+  }
+  return payload;
+};
+
+const loginUser = UserModel => 
+
 module.exports = UserModel => ({
   saveUser: saveUser(UserModel),
   userExists: userExists(UserModel),
   encryptPassword: encryptPassword(UserModel),
-  // validateUser: validateUser(UserModel),
-  // loginUser: loginUser(UserModel),
+  validateUser: validateUser(UserModel),
+  loginUser: loginUser(UserModel),
   // logOut: logoutUser(UserModel)
 });
