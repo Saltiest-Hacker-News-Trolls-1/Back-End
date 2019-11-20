@@ -2,6 +2,8 @@ import React, {useEffect} from 'react';
 import UserNav from "./UserNav";
 import {get} from "../../store/actions/AuthAction";
 import {connect} from "react-redux"
+import {saveFav, removeFav} from "../../store/actions/FavsAction";
+import RemoveFavList from "./RemoveFavList";
 
 const UserProfile = props => {
 
@@ -9,14 +11,13 @@ const UserProfile = props => {
         props.get()
     }, [])
 
-    
-    // const saveFav = item => {
+    const save = item => {
+        props.saveFav(item);
+    }
 
-    // }
-
-    // const removeFav = item => {
-
-    // }
+    const remove = item => {
+        props.removeFav(item);
+    }
 
     return(
         <>
@@ -25,11 +26,23 @@ const UserProfile = props => {
                 <h1>Salty Hackers</h1>
                 <div>
                     {props.hackers.map(hacker => 
-                    <p key={hacker.id}><button></button>{hacker}</p>)}
+                    <p key={hacker.id}>❤️<button onClick={save}></button>{hacker}</p>)}
+                </div>
+            </div>
+            <div>
+                
+                <div>
+                    <RemoveFavList remove={remove} />
                 </div>
             </div>
         </>
     )
+}
+
+const mapDispatchToProps = {
+    saveFav,
+    get,
+    removeFav
 }
 
 const mapStateToProps = state => {
@@ -39,4 +52,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps,{get})(UserProfile);
+export default connect(mapStateToProps, mapDispatchToProps)(UserProfile);

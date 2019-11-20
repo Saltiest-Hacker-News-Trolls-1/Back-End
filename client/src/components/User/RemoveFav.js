@@ -1,12 +1,14 @@
 import React from 'react';
 
-const RemoveFav = () => {
+const RemoveFav = props => {
 
     return(
         <li>
             <button 
-            //onClick={() => }
-            >Remove</button>
+            onClick={() => props.remove(props.hacker)}
+            >💔</button>
+            {props.hacker.name}
+            {props.hacker.saltyness}
         </li>
     )
 }
