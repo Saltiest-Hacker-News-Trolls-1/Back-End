@@ -43,6 +43,7 @@ const validateUser = UserModel => async (name, password) => {
     }
   });
   if (foundUser.length > 0) {
+    console.log('validateUser',password, foundUser[0].password)
     const passwordsMatch = await compare(password, foundUser[0].password);
 
     if (passwordsMatch) {
