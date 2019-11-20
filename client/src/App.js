@@ -28,7 +28,7 @@ function App() {
   //     .catch(err => console.log(err.response))
   // }
 
- 
+
   const isToken = useEffect(() => {
     axiosWithAuth()
       .get("/hackers/get")
@@ -38,18 +38,18 @@ function App() {
         history.push("/protected")
       })
       .catch(err => console.log(err.response))
-  }, [])
+  }, [history])
 
   return (
-    <div className="App" onEnter={()=>!localStorage.token === null ? {isToken} : <Redirect to="/" />}>
+    <div className="App" onEnter={() => !localStorage.token === null ? { isToken } : <Redirect to="/" />}>
       <Switch>
         <Route exact path="/" render={props => <Home {...props} />} />
         <Route exact path="/about" render={props => <About {...props} />} />
         <PrivateRoute path="/protected">
           <UserProfile />
         </PrivateRoute>
-        <Route exact path="/login" render={props => (<><Navbar /> <FormikLoginForm {...props} /></>)} />
-        <Route exact path="/register" render={props => (<><Navbar /> <FormikRegisterForm {...props} /></>)} />
+        <Route exact path="/login" render={props => (<><Navbar {...props} /> <FormikLoginForm {...props} /></>)} />
+        <Route exact path="/register" render={props => (<><Navbar {...props} /> <FormikRegisterForm {...props} /></>)} />
       </Switch>
 
       {/* other routes */}
