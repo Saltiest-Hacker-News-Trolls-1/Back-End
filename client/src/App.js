@@ -7,10 +7,10 @@ import FormikRegisterForm from "./components/RegisterForm";
 import PrivateRoute from "./utils/PrivateRoute";
 import UserProfile from "./components/User/UserProfile";
 import Navbar from './components/Navigation';
-import Nav from './components/Nav'
 import { axiosWithAuth } from './utils/axiosWithAuth';
 import { useHistory } from "react-router-dom";
 import About from './components/About';
+import Home from './components/Home';
 
 
 function App() {
@@ -42,7 +42,7 @@ function App() {
   return (
     <div className="App" >
       <Switch>
-        <Route exact path="/" render={props => <Nav {...props} />} />
+        <Route exact path="/" render={props => <Home {...props} />} />
         <Route exact path="/about" render={props => <About {...props} />} />
         <PrivateRoute path="/protected">
           <UserProfile />
