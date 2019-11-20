@@ -1,4 +1,4 @@
-import {axiosWithAuth} from "../../../utils/axiosWithAuth";
+import {axiosWithAuth} from "../../utils/axiosWithAuth";
 
 
 export const START_GETTING = "START_GETTING";
@@ -8,10 +8,10 @@ export const GET_FAILURE = "GET_FAILURE";
 export const get = () => dispatch => {
     dispatch({type: START_GETTING})
     axiosWithAuth()
-        .get("")
+        .get("/hacker/get")
         .then(res => {
             console(res)
-            //dispatch({type: FETCH_SUCCESS, payload: res.data})
+            dispatch({type: GET_SUCCESS, payload: res.data})
         })
         .catch(err => dispatch({type: GET_FAILURE, payload: err.response}))
 }

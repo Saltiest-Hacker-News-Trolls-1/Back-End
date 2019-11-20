@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import './App.css';
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import FormikLoginForm from './components/LoginForm';
 import FormikRegisterForm from "./components/RegisterForm";
 import PrivateRoute from "./utils/PrivateRoute";
@@ -28,7 +28,8 @@ function App() {
   //     .catch(err => console.log(err.response))
   // }
 
-  useEffect(() => {
+ 
+  const isToken = useEffect(() => {
     axiosWithAuth()
       .get("/hackers/get")
       .then(res => {
@@ -40,7 +41,7 @@ function App() {
   }, [])
 
   return (
-    <div className="App" >
+    <div className="App" onEnter={()=>!localStorage.token === null ? {isToken} : <Redirect to="/" />}>
       <Switch>
         <Route exact path="/" render={props => <Home {...props} />} />
         <Route exact path="/about" render={props => <About {...props} />} />
