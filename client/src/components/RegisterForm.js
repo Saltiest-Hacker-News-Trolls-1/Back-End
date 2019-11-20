@@ -5,7 +5,7 @@ import * as Yup from "yup";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { useHistory } from "react-router-dom";
 
-const RegisterForm = ({ errors, touched, handleSubmit, handleChange }) => {
+const RegisterForm = ({ errors, touched, handleSubmit, handleChange, status }) => {
 
     const history = useHistory();
 
@@ -60,6 +60,7 @@ const RegisterForm = ({ errors, touched, handleSubmit, handleChange }) => {
                         </Form>
                     </CardBody>
                 </Card>
+                {!!status && <Alert color="danger" className="my-3">{`${status}`}</Alert>}
             </Col>
         </div>
     )
@@ -78,7 +79,7 @@ const FormikRegisterForm = withFormik({
         password: Yup.string().required(`Please enter your password.`),
         matchPass: Yup.string().oneOf([Yup.ref('password'), null], "Passwords do not match.").required(`Password verification is required.`)
     }),
-    handleSubmit(values, { props }) {
+    handleSubmit(values, { props, setStatus }) {
         const { history } = props;
         console.log('submitted register');
         console.log(props);
@@ -94,6 +95,7 @@ const FormikRegisterForm = withFormik({
             })
             .catch(error => {
                 console.log(`Server responded with ${error.response.data.msg}`);
+                setStatus(error);
             });
     },
     handleChange(values, setValues) {
