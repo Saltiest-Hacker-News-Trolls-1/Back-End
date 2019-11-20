@@ -1,6 +1,7 @@
 module.exports = {
     register: require('./register'),
     login: require('./login'),
+    // auth: require('./auth')
     // logOut: require('./logout_user'),
     // authUser: require('./auth')
 };

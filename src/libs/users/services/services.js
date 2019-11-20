@@ -19,10 +19,11 @@ const userExists = UserModel => async name => {
   return Users.count > 0
 }
 
-const getUserByName = UserModel => async name => {
-  return UserModel.findOne({
+const getUserByID = UserModel => async id => {
+  id = parseInt(id, 10)
+  return await UserModel.findOne({
     where: {
-      name
+      id
     },
   })
 }
@@ -52,7 +53,7 @@ const validateUser = UserModel => async (name, password) => {
 };
 
 
-const encodeToken = () => async userID => {
+const encodeToken = userID => {
   const payload = {
     exp: moment()
       .add(14, "days")
@@ -63,11 +64,28 @@ const encodeToken = () => async userID => {
   return jwt.encode(payload, secret);
 }
 
+const decodeToken = (token, callback) => {
+  try {
+    console.log("token", token)
+    const payload = jwt.decode(token, secret);
+    console.log("payload", payload)
+
+    const now = moment().unix();
+    // check if the token has expired
+    if (now > payload.exp) callback("Token has expired.");
+    else callback(null, payload);
+  } catch (e) {
+    console.log("decodeErr", e);
+  }
+}
+
 module.exports = UserModel => ({
   saveUser: saveUser(UserModel),
   userExists: userExists(UserModel),
   encryptPassword: encryptPassword(UserModel),
   validateUser: validateUser(UserModel),
-  encodeToken: encodeToken(UserModel),
+  getUserByID: getUserByID(UserModel),
+  encodeToken: encodeToken,
+  decodeToken: decodeToken,
   // logOut: logoutUser(UserModel)
 });
