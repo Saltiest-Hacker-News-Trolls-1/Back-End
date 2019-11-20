@@ -7,12 +7,12 @@ import { useHistory } from "react-router-dom";
 
 const RegisterForm = ({ errors, touched, handleSubmit, handleChange }) => {
 
+    const history = useHistory();
+
     // const [credentials, setCredentials] = useState({
     //     username: "",
     //     password: ""
     // })
-
-    // const history = useHistory();
 
 
     // const handleChange = e => {
@@ -66,11 +66,11 @@ const RegisterForm = ({ errors, touched, handleSubmit, handleChange }) => {
 }
 
 const FormikRegisterForm = withFormik({
-    mapPropsToValues({ username, password, matchPass }) {
+
+    mapPropsToValues({ username, password }) {
         return {
             username: username || "",
-            password: password || "",
-            matchPass: matchPass || ""
+            password: password || ""
         };
     },
     validationSchema: Yup.object().shape({
@@ -78,14 +78,19 @@ const FormikRegisterForm = withFormik({
         password: Yup.string().required(`Please enter your password.`),
         matchPass: Yup.string().oneOf([Yup.ref('password'), null], "Passwords do not match.").required(`Password verification is required.`)
     }),
-    handleSubmit(values) {
-        console.log('submitted register')
+    handleSubmit(values, { props }) {
+        const { history } = props;
+        console.log('submitted register');
+        console.log(props);
+
         axiosWithAuth()
             .post("/user/register", values)
             .then(response => {
                 console.log(response);
-                // localStorage.setItem("token", response.data)
-                //history.push("/protected")
+                localStorage.setItem("token", response.data)
+                history.push("/protected")
+                console.log(history);
+
             })
             .catch(error => {
                 console.log(`Server responded with ${error.response.data.msg}`);
