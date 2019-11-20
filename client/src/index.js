@@ -10,9 +10,9 @@ import thunk from "redux-thunk";
 import logger from "redux-logger";
 import {composeWithDevTools} from "redux-devtools-extension";
 import 'bootstrap/dist/css/bootstrap.css';
-import isLoggedIn from "./store/reducers/AuthReducer"
+import combineReducers from "./store/reducers/AuthReducer"
 
-const store = createStore(isLoggedIn, composeWithDevTools(applyMiddleware(thunk, logger)))
+const store = createStore(combineReducers, composeWithDevTools(applyMiddleware(thunk, logger)))
 
 
 ReactDOM.render(

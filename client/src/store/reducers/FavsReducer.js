@@ -24,4 +24,4 @@ const FavsReducer = (state=initialState, action) => {
     }
 }
 
-export default isLoggedIn
+export default FavsReducer;

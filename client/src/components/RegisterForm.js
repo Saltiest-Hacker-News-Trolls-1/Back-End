@@ -12,7 +12,7 @@ const RegisterForm = ({ errors, touched, handleSubmit, handleChange }) => {
     //     password: ""
     // })
 
-    // const history = useHistory();
+    //const history = useHistory();
 
 
     // const handleChange = e => {

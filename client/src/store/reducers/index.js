@@ -1,8 +1,9 @@
 import {combineReducers} from "redux";
 
-import isLoggedIn from "./AuthReducer";
+import AuthReducer from "./AuthReducer";
+import FavsReducer from "./FavsReducer"
 
 export default combineReducers({
-    isLoggedIn,
-
+    AuthReducer,
+    FavsReducer
 })
