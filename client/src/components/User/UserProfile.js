@@ -1,8 +1,8 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import UserNav from "./UserNav";
-import {get} from "../../store/actions/AuthAction";
-import {connect} from "react-redux"
-import {saveFav, removeFav} from "../../store/actions/FavsAction";
+import { get } from "../../store/actions/AuthAction";
+import { connect } from "react-redux"
+import { saveFav, removeFav } from "../../store/actions/FavsAction";
 import RemoveFavList from "./RemoveFavList";
 
 const UserProfile = props => {
@@ -19,18 +19,18 @@ const UserProfile = props => {
         props.removeFav(item);
     }
 
-    return(
+    return (
         <>
             <UserNav />
             <div>
                 <h1>Salty Hackers</h1>
                 <div>
-                    {props.hackers.map(hacker => 
-                    <p key={hacker.id}>❤️<button onClick={save}></button>{hacker}</p>)}
+                    {props.hackers.map(hacker =>
+                        <p key={hacker.id}>❤️<button onClick={save}></button>{hacker}</p>)}
                 </div>
             </div>
             <div>
-                
+
                 <div>
                     <RemoveFavList remove={remove} favorites={props.favorite} />
                 </div>
@@ -47,7 +47,7 @@ const mapDispatchToProps = {
 
 const mapStateToProps = state => {
     console.log("state", state.hackers)
-    return{
+    return {
         hackers: state.hackers,
         favorites: state.favorites
     }
