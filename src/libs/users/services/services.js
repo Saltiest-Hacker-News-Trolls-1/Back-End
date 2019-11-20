@@ -37,7 +37,7 @@ const encryptPassword = () => async password => {
 
 const validateUser = UserModel => async (name, password) => {
   let payload;
-  const foundUser = await UserModel.findOne({
+  const foundUser = await UserModel.findAll({
     where: {
       name
     }
@@ -46,7 +46,7 @@ const validateUser = UserModel => async (name, password) => {
     const passwordsMatch = await compare(password, foundUser[0].password);
 
     if (passwordsMatch) {
-      payload = foundUser
+      payload = foundUser[0]
     }
   }
   return payload;
