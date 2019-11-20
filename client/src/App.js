@@ -1,16 +1,16 @@
 import React, { useEffect } from 'react';
 import './App.css';
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import FormikLoginForm from './components/LoginForm';
 import FormikRegisterForm from "./components/RegisterForm";
 import PrivateRoute from "./utils/PrivateRoute";
 import UserProfile from "./components/User/UserProfile";
 import Navbar from './components/Navigation';
-import Nav from './components/Nav'
 import { axiosWithAuth } from './utils/axiosWithAuth';
 import { useHistory } from "react-router-dom";
 import About from './components/About';
+import Home from './components/Home';
 
 
 function App() {
@@ -28,7 +28,8 @@ function App() {
   //     .catch(err => console.log(err.response))
   // }
 
-  useEffect(() => {
+ 
+  const isToken = useEffect(() => {
     axiosWithAuth()
       .get("/hackers/get")
       .then(res => {
@@ -40,9 +41,9 @@ function App() {
   }, [])
 
   return (
-    <div className="App" >
+    <div className="App" onEnter={()=>!localStorage.token === null ? {isToken} : <Redirect to="/" />}>
       <Switch>
-        <Route exact path="/" render={props => <Nav {...props} />} />
+        <Route exact path="/" render={props => <Home {...props} />} />
         <Route exact path="/about" render={props => <About {...props} />} />
         <PrivateRoute path="/protected">
           <UserProfile />

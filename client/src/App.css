@@ -11,7 +11,6 @@
   display: flex;
   align-items: center;
   flex-direction: row;
-  width: 50%;
   justify-content: space-around;
   margin: 2% 0;
   font-size: calc(5px + 2vmin);
@@ -73,7 +72,8 @@ border: 1px solid #FD8936;
 padding: 7%;
 width: 90%;
 box-sizing: border-box;
-font-size: calc(50px + 2vmin);
+/* font-size: calc(50px + 2vmin); */
+font-size: 1.5rem;
 }
 
 .title{
@@ -82,6 +82,7 @@ font-size: calc(50px + 2vmin);
   justify-content: center;
   font-size: calc(60px + 2vmin);
   font-family: 'Roboto';
+  
 }
 
 .textBox{
