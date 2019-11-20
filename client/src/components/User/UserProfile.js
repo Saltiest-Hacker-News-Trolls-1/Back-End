@@ -3,12 +3,13 @@ import UserNav from "./UserNav";
 import {get} from "../../store/actions/AuthAction";
 import {connect} from "react-redux"
 
-const UserProfile = () => {
+const UserProfile = props => {
 
     useEffect(() => {
         props.get()
     }, [])
 
+    
     // const saveFav = item => {
 
     // }
@@ -32,6 +33,7 @@ const UserProfile = () => {
 }
 
 const mapStateToProps = state => {
+    console.log("state", state.hackers)
     return{
         hackers: state.hackers
     }

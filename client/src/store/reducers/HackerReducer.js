@@ -2,8 +2,8 @@ import {START_GETTING, GET_SUCCESS, GET_FAILURE} from "../actions/AuthAction"
 
 const initialState = {
     hackers: [{
-        name: "",
-        saltyness: 0
+        name: "HackerMan",
+        saltyness: 9001
         }],
     isGetting: false,
     error: null
