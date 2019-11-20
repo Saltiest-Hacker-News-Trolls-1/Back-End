@@ -5,7 +5,7 @@ import * as Yup from "yup";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { useHistory } from "react-router-dom";
 
-const LoginForm = ({ errors, touched, handleSubmit, handleChange, values }) => {
+const LoginForm = ({ errors, touched, handleSubmit, handleChange, values, status }) => {
 
     const history = useHistory();
 
@@ -50,6 +50,7 @@ const LoginForm = ({ errors, touched, handleSubmit, handleChange, values }) => {
                         </Form>
                     </CardBody>
                 </Card>
+                {!!status && <Alert color="danger" className="my-3">{`${status}`}</Alert>}
             </Col>
         </div>
     )
@@ -66,7 +67,7 @@ const FormikLoginForm = withFormik({
         username: Yup.string().required(`Please enter a username.`),
         password: Yup.string().required(`Please enter your password.`)
     }),
-    handleSubmit(values, { props }) {
+    handleSubmit(values, { props, setStatus }) {
         // let history = useHistory()
         // console.log(values)
         const { history } = props;
@@ -79,6 +80,7 @@ const FormikLoginForm = withFormik({
             })
             .catch(error => {
                 console.log(`Server responded with ${error.response.data.msg}`);
+                setStatus(error)
             });
     },
     handleChange(values, setValues) {
