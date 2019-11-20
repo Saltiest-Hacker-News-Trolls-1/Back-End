@@ -7,18 +7,18 @@ const Navbar = (props) => {
     const { pathname } = props.location;
 
     return (
-        <Nav pills className="p-2 d-flex justify-content-around mb-2 shadow-sm">
-            <NavItem>
-                <Link to="/login"><NavLink active={pathname === "/login"} >Login</NavLink></Link>
+        <Nav pills style={{ zIndex: 99 }} className="p-2 d-flex justify-content-around mb-2 shadow-sm">
+            <NavItem style={{ cursor: "pointer" }}>
+                <NavLink active={pathname === "/login"} onClick={() => { props.history.push("/login") }}>Login</NavLink>
             </NavItem>
-            <NavItem>
-                <Link to="/register"><NavLink active={pathname === "/register"}>Register</NavLink></Link>
+            <NavItem style={{ cursor: "pointer" }}>
+                <NavLink active={pathname === "/register"} onClick={() => { props.history.push("/register") }}>Register</NavLink>
             </NavItem>
-            <NavItem>
-                <Link to="/about"><NavLink active={pathname === "/about"}>about</NavLink></Link>
+            <NavItem style={{ cursor: "pointer" }}>
+                <NavLink active={pathname === "/about"} onClick={() => { props.history.push("/about") }}>About</NavLink>
             </NavItem>
-            <NavItem>
-                <Link to="/"><NavLink active={pathname === "/"}>home</NavLink></Link>
+            <NavItem style={{ cursor: "pointer" }}>
+                <NavLink active={pathname === "/"} onClick={() => { props.history.push("/") }}>Home</NavLink>
             </NavItem>
         </Nav>
     );
