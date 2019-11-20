@@ -14,11 +14,8 @@ const RegisterForm = ({ errors, touched, handleSubmit, handleChange, status }) =
     //     password: ""
     // })
 
-<<<<<<< HEAD
-=======
     //const history = useHistory();
 
->>>>>>> 37f66ee41040484bbb1f6fa8969cd4054ae4ed9a
 
     // const handleChange = e => {
     //     setCredentials({
