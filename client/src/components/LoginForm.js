@@ -7,12 +7,7 @@ import { useHistory } from "react-router-dom";
 
 const LoginForm = ({ errors, touched, handleSubmit, handleChange, values }) => {
 
-    // const [credentials, setCredentials] = useState({
-    //     username: "",
-    //     password: ""
-    // })
-
-    // const history = useHistory();
+    const history = useHistory();
 
 
     // const handleChange = e => {
@@ -71,19 +66,19 @@ const FormikLoginForm = withFormik({
         username: Yup.string().required(`Please enter a username.`),
         password: Yup.string().required(`Please enter your password.`)
     }),
-    handleSubmit(values) {
+    handleSubmit(values, { props }) {
         // let history = useHistory()
         // console.log(values)
+        const { history } = props;
         axiosWithAuth()
             .post("/user/login", values)
             .then(response => {
                 console.log('loginRes', response.data);
                 localStorage.setItem("token", response.data.token)
-                // history.push("/protected")
+                history.push("/protected")
             })
             .catch(error => {
                 console.log(`Server responded with ${error.response.data.msg}`);
-                // console.log('loginErr', error.body)
             });
     },
     handleChange(values, setValues) {
