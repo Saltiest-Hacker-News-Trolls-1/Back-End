@@ -1,20 +1,3 @@
-<<<<<<< HEAD
-import React from 'react';
-import UserNav from "./UserNav"
-import axios from "axios"
-
-const UserProfile = () => {
-// axios 
-// .get(``)
-// .then(response =>{
-          
-//     console.log(response);
-//     setData(response.data.results);
-//   })
-//   .catch(error =>{
-//     console.log(error);
-//   });
-=======
 import React, {useEffect} from 'react';
 import UserNav from "./UserNav";
 import {get} from "../../store/actions/AuthAction";
@@ -23,7 +6,6 @@ import {saveFav, removeFav} from "../../store/actions/FavsAction";
 import RemoveFavList from "./RemoveFavList";
 
 const UserProfile = props => {
->>>>>>> 37f66ee41040484bbb1f6fa8969cd4054ae4ed9a
 
     useEffect(() => {
         props.get()
