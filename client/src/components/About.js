@@ -1,40 +1,41 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import saltShaker from '../saltShaker.svg';
-
+import { Nav, NavItem, Card, } from 'reactstrap';
 
 const About = () => {
   return (
     <div className="App-Wrap">
 
-      <div className="Nav">
-        <div>
-          <Link className="Register" to="/register">Register</Link>
-        </div>
-
-
-        <div>
+<Nav pills className="p-2 d-flex justify-content-around mb-2 shadow-sm">
+        
+        <NavItem>
           <Link className="Login" to="/login">Login</Link>
 
-        </div>
+        </NavItem>
         
-        <div>
+        <NavItem>
+          <Link className="Register" to="/register">Sign Up</Link>
+        </NavItem>
+
+        <NavItem>
           <Link className="About" to="/about">About</Link>
-        </div>
+        </NavItem>
 
-        <div>
+        <NavItem>
           <Link className="Home" to="/">Home</Link>
-        </div>
+        </NavItem>
 
 
-      </div>
-      <div className="aboutTitle">
+      </Nav>
+      <Card style={{backgroundColor: '#EDFDFA'}} className="shadow-sm ">
       <h1 className="aboutTitle1">WHY</h1>
-      </div><h1 className="aboutTitle2">SO</h1>
+      <h1 className="aboutTitle2">SO</h1>
       <h1 className="aboutTitle3">SALTY?</h1>
       <div className="saltShaker"><img src={saltShaker} alt="saltShaker" />
       </div>
-      <div className="saltPileContainer">
+      </Card>
+      <Card style={{backgroundColor: '#EDFDFA'}} className="shadow-sm d-flex justify-content-center">
           <div className="saltText">
         <div className="saltPile">
         <p className="aboutText">We make it our goal to encapsulate the essence of developer rage, the very force that was vital in the making of this website. Here, you will find scores of recorded frustration for your admiration or entertainment.</p>
@@ -42,7 +43,7 @@ const About = () => {
         </div>
         </div>
         
-      </div>
+      </Card>
     </div>
   );
 };
