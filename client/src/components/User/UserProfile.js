@@ -32,7 +32,7 @@ const UserProfile = props => {
             <div>
                 
                 <div>
-                    <RemoveFavList remove={remove} />
+                    <RemoveFavList remove={remove} favorites={props.favorite} />
                 </div>
             </div>
         </>
@@ -48,7 +48,8 @@ const mapDispatchToProps = {
 const mapStateToProps = state => {
     console.log("state", state.hackers)
     return{
-        hackers: state.hackers
+        hackers: state.hackers,
+        favorites: state.favorites
     }
 }
 

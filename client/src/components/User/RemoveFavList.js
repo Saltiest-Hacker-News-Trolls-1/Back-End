@@ -1,6 +1,7 @@
 import React from 'react';
 import RemoveFav from "./RemoveFav";
 
+
 const RemoveFavList = props => {
 
     console.log("Remove", props)
@@ -8,16 +9,17 @@ const RemoveFavList = props => {
     return(
         <div>
             <h1>Favorite Salty Hackers</h1>
-            {props.hackers.length ? (
+            {/* {props.favorites.length ? ( */}
                 <ol>
-                {props.hackers.map(hacker => {
-                <RemoveFav 
-                key={hacker.id}
-                remove={props.remove}
-                />
-                })}
+                    {props.favorites.map(fav => {
+                    <RemoveFav 
+                    key={fav.id}
+                    remove={props.remove}
+                    favorite={fav}
+                    />
+                    })}
                 </ol> 
-            ) : (<p>Your favorites here</p>)}
+            {/* ) : (<p>Your favorites here</p>)} */}
         </div>
     )
 }
