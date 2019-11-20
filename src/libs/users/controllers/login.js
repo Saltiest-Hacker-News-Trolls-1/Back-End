@@ -5,16 +5,18 @@ const { validateUser, encodeToken } = require('../services');
 // if passwords match, encode a token with userId,
 // return token 
 module.exports = async (req, res, next) => {
-  const { username, password } = req.body;
-  try {
-    const validUser = await validateUser(username, password);
-    if (validUser) {
-      const token = await encodeToken(validUser.id);
-      return res.json({ token });
+    const { username, password } = req.body;
+    try {
+        const validUser = await validateUser(username, password);
+        console.log('validUser', validUser)
+        if (validUser) {
+            const token = await encodeToken(validUser.id);
+            return res.json({ token });
+        }
+        const tryAgain = new Error("Try Again!")
+        tryAgain.httpStatusCode = 400
+        throw tryAgain
+    } catch (e) {
+        next(e);
     }
-    throw new Error('Try again')
-
-  } catch (e) {
-    next(e);
-  }
 };

@@ -16,12 +16,17 @@ app.get('/hackers/get', ensureAuthenticated, getHackers)
 
 // error handling
 app.use((err, req, res, next) => {
-    if (err.name) {
-        res.status(400).json({
-            message: `${err.message}!`,
-            stack: err.stack
-        });
-    }
+    // if (err.name) {
+    //     res.status(400).json({
+    //         message: `${err.message}!`,
+    //         stack: err.stack
+    //     });
+    // }
+    // res.status(400).send(err.message)
+    res.status(err.httpStatusCode || 500).json({
+        msg: err.message,
+        // detail: err.detail
+      });
 });
 
 module.exports = app;

@@ -18,6 +18,7 @@ module.exports = async (req, res, next) => {
             console.log("usersAuthErr2", err)
             // return res.status(400).json({ status: "Please log in'" });
         }
+        console.log('tokenPayoad', payload.sub)
         user = getUserByID(payload.sub)
     });
     if(user){

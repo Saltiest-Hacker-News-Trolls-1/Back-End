@@ -1,3 +1,3 @@
-module.exports = (res, req, next) => {
+module.exports = (req, res, next) => {
     return res.json({hackers: ":)"})
 }

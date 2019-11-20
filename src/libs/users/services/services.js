@@ -36,8 +36,8 @@ const encryptPassword = () => async password => {
 }
 
 const validateUser = UserModel => async (name, password) => {
-  let payload = false
-  const foundUser = await UserModel.findAll({
+  let payload;
+  const foundUser = await UserModel.findOne({
     where: {
       name
     }
@@ -46,7 +46,7 @@ const validateUser = UserModel => async (name, password) => {
     const passwordsMatch = await compare(password, foundUser[0].password);
 
     if (passwordsMatch) {
-      payload = true
+      payload = foundUser
     }
   }
   return payload;
@@ -54,6 +54,7 @@ const validateUser = UserModel => async (name, password) => {
 
 
 const encodeToken = userID => {
+  console.log('encodeToken userID', userID)
   const payload = {
     exp: moment()
       .add(14, "days")

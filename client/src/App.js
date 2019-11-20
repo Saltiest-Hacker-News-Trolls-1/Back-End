@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Route, Switch } from "react-router-dom";
@@ -9,7 +9,7 @@ import UserProfile from "./components/User/UserProfile";
 import Navbar from './components/Navigation';
 import Nav from './components/Nav'
 import { axiosWithAuth } from './utils/axiosWithAuth';
-import {useHistory} from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import About from './components/About';
 
 
@@ -17,19 +17,30 @@ function App() {
   console.log(localStorage.token)
   const history = useHistory()
 
-  const isLoggedIn = () => {
+  // const isLoggedIn = () => {
+  //   axiosWithAuth()
+  //     .get("/hackers/get")
+  //     .then(res => {
+  //       console.log("get hackers", res)
+  //       // localStorage.setItem("token", res.data.payload)
+  //       history.push("/protected")
+  //     })
+  //     .catch(err => console.log(err.response))
+  // }
+
+  useEffect(() => {
     axiosWithAuth()
-      .post("")
+      .get("/hackers/get")
       .then(res => {
-        console.log("login", res)
-        localStorage.setItem("token", res.data.payload)
+        console.log("get hackers", res)
+        // localStorage.setItem("token", res.data.payload)
         history.push("/protected")
       })
       .catch(err => console.log(err.response))
-  }
+  }, [])
 
   return (
-    <div className="App" onEnter={isLoggedIn}>
+    <div className="App" >
       <Switch>
         <Route exact path="/" render={props => <Nav {...props} />} />
         <Route exact path="/about" render={props => <About {...props} />} />
@@ -37,7 +48,7 @@ function App() {
           <UserProfile />
         </PrivateRoute>
         <Route exact path="/login" render={props => (<><Navbar /> <FormikLoginForm {...props} /></>)} />
-        <Route exact path="/register" render={props => (<><Navbar /> <FormikRegisterForm {...props} /></>)} /> 
+        <Route exact path="/register" render={props => (<><Navbar /> <FormikRegisterForm {...props} /></>)} />
       </Switch>
 
       {/* other routes */}
