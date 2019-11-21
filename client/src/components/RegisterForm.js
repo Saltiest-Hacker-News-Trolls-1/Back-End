@@ -14,6 +14,8 @@ const RegisterForm = ({ errors, touched, handleSubmit, handleChange, status }) =
     //     password: ""
     // })
 
+    //const history = useHistory();
+
 
     // const handleChange = e => {
     //     setCredentials({
@@ -89,7 +91,7 @@ const FormikRegisterForm = withFormik({
             .then(response => {
                 console.log(response);
                 localStorage.setItem("token", response.data)
-                history.push("/protected")
+                history.push("/login")
                 console.log(history);
 
             })
