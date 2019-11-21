@@ -12,7 +12,7 @@ import {composeWithDevTools} from "redux-devtools-extension";
 import 'bootstrap/dist/css/bootstrap.css';
 import combineReducers from "./store/reducers"
 
-const store = createStore(combineReducers, composeWithDevTools(applyMiddleware(thunk, logger)))
+const store = createStore(combineReducers, composeWithDevTools (applyMiddleware(thunk, logger)))
 
 
 ReactDOM.render(
