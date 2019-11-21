@@ -16,6 +16,7 @@ import Home from './components/Home';
 function App() {
   console.log(localStorage.token)
   const history = useHistory()
+  console.log('NODE_ENV', process.env.NODE_ENV)
 
   // THis funciton should just check if there was no error, redirect to profile, which will
   // make a call to the same /hackers/get route, but actually use the hackers data to populate state
