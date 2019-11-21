@@ -17,18 +17,6 @@ function App() {
   console.log(localStorage.token)
   const history = useHistory()
 
-  // const isLoggedIn = () => {
-  //   axiosWithAuth()
-  //     .get("/hackers/get")
-  //     .then(res => {
-  //       console.log("get hackers", res)
-  //       // localStorage.setItem("token", res.data.payload)
-  //       history.push("/protected")
-  //     })
-  //     .catch(err => console.log(err.response))
-  // }
-
-
   useEffect(() => {
     const token = localStorage.getItem("token")
     if (token) {
