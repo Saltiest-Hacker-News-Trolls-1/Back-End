@@ -8,9 +8,9 @@ export const GET_FAILURE = "GET_FAILURE";
 export const get = () => dispatch => {
     dispatch({type: START_GETTING})
     axiosWithAuth()
-        .get("/hacker/get")
+        .get("/hackers/get")
         .then(res => {
-            console(res)
+            console('zzz',res.data)
             dispatch({type: GET_SUCCESS, payload: res.data})
         })
         .catch(err => dispatch({type: GET_FAILURE, payload: err.response}))

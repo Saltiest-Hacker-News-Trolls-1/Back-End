@@ -186,6 +186,33 @@ font-family: 'lucida console';
     flex-wrap: wrap;
   }
 
+  .hacker-card{
+    border: 1px solid black;
+    width: 50%;
+    display: flex;
+    margin: 20px 0px;
+  }
+
+  .hacker-card p{
+    display: flex;
+    padding-right: 20px;
+    padding-left: 20px;
+ 
+  }
+
+  .hacker{
+    display: flex;
+    flex-direction: column;
+    
+    
+  }
+
+  .profile{
+   
+    width: 60%;
+    margin: auto;
+  }
+
   @media only screen and (min-width: 600px){
     *{
       background: white;

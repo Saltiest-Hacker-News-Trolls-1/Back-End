@@ -9,106 +9,92 @@ import { Route } from "react-router-dom";
 import ChangePassForm from "./ChangePassForm";
 
 
-const UserProfile = props => {
+
+class UserProfile extends React.Component {
+
+
+    constructor() {
+        super()
+        this.state = {
+            hackers: [{ id: "john", negativity: -.5 },
+            { id: "dan", negativity: .5 },
+            { id: "sally", negativity: -0.0 },
+            { id: "john", negativity: -.5 },
+            { id: "dan", negativity: .5 },
+            { id: "sally", negativity: -0.0 },
+            { id: "john", negativity: -.5 },
+            { id: "dan", negativity: .5 },
+            { id: "sally", negativity: -0.0 },
+            { id: "sally", negativity: -0.0 }]
+        }
+    }
 
     
-    useEffect(() => {
-        props.get();
-    }, [])
 
-    // const updatePass = e => {
-
-    //     e.preventDefault();
-
-    //     axiosWithAuth()
-    //         .put(`/user/changePass/${props.match.params.id}`, props.profile.password)
-    //         .catch(err => console.log(err.response))
-    // }
-
-    const delProfile = () =>{
-        axiosWithAuth()
-            .delete(`/user/deleteAccount/${props.match.params.id}`)
-            .catch(err => console.log(err.response))
-    }
-
-    const save = item => {
-        props.saveFav(item);
-    }
-
-    const remove = item => {
-        props.removeFav(item);
-    }
-
-    const salty = []
-
-    const saltiest = () => {
-        //salty.sort((a,b) => (b.saltyness - a.saltyness))
-        const salt = document.querySelector("#hacker-list");
-
-        // [...salt.children].sort((a,b) => (b.saltyness - a.saltyness).map(child => listenerCount.appendChild(child))
-    }
-
-    const needsSalt = () => {
-        salty.sort((a,b) => (a.saltyness - b.saltyness))
-    }
-    
-    useEffect(() => {
+    componentDidMount() {
+        console.log(this);
         axiosWithAuth()
             .get("/hackers/get")
-            .then(res => {
-                salty.push(res.data)
+            .then(response => {
+                console.log('loginRes', response.data);
+                // this.setState({ hackers: response.data })
             })
-            .catch(err => console.log(err.response))
-    }, [])
+            .catch(error => {
+                console.log(`Server responded with ${error.response.data.msg}`);
+                // setStatus(erro/r)
+            });
+
+        
+    }
 
 
-    return (
-        <div>
-            <UserNav />
+
+    delProfile = () =>{
+        console.log(this.hackers.id)
+        axiosWithAuth()
+        .delete(`/user/deleteAccount/${this.props.match.params.id}`)
+        .catch(err => console.log(err.response))
+    }
+    
+
+ 
+
+
+    render() {
+
+
+    
+        return (
             <div>
-                <button onClick={delProfile}>Delete Profile</button>
-                <button onClick={()=><Route expact path="/change-pass/:id" render={props => (<ChangePassForm {...props} />)} />}>Change Password</button>
-            </div>
-            <div>
-                <h1>Salty Hackers</h1>
+                <UserNav />
+                <div className="profile">
                 <div>
-                    <button onClick={()=>{
-                        // const salt = document.querySelector("#hacker-list");
+                    <button onClick={this.delProfile}>Delete Profile</button>
 
-                        // [...salt.children]
-                        //     .sort((a,b) => (b.saltyness - a.saltyness)
-                        //     .map(child => listenerCount.appendChild(child))
-                    }} >The Saltiest</button>
-                    <button onClick={needsSalt}>Needs More Salt</button>
+                    <Route expact path="/change-pass/:id" render={props => (<ChangePassForm {...props} />)} >
+                    <button type="button"
+                    >Change Password</button></Route>
                 </div>
-                <div id="hacker-list">
-                    {props.hackers.map(hacker =>
-                        <span key={hacker.id} aria-label="heart" role="img">❤️<button onClick={save}></button>{hacker}</span>)}
+                 <div className="hacker">
+                        {
+                            // console.log('this.state', this.state)
+                            this.state.hackers.map(item => (
+                                <div className="hacker-card">
+                                    <button>❤️</button>
+                                    <p>Hacker: {item.id}</p>
+                                    <p>Saltiness: {item.negativity}</p>
+                                </div>
+                            ))
+                        }
+                 </div>
+
                 </div>
-            </div>
-            <div>
-
-                <div>
-                    <RemoveFavList remove={remove} favorites={props.favorites} />
-                </div>
-            </div>
-        </div>
-    )
-}
-
-// const mapDispatchToProps = {
-//     saveFav,
-//     get,
-//     removeFav
-// }
-
-const mapStateToProps = state => {
-    console.log("state", state)
-    return{
-        hackers: state.hackers,
-        favorites: state.favorites,
-        profile: state.id
+               
+            </div >
+        )
     }
 }
+ 
 
-export default connect(mapStateToProps, {get, saveFav, removeFav})(UserProfile);
+
+export default UserProfile;
