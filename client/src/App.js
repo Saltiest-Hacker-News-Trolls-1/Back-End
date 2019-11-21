@@ -29,7 +29,7 @@ function App() {
   // }
 
 
-  const isToken = useEffect(() => {
+  useEffect(() => {
     const token = localStorage.getItem("token")
     if (token) {
       axiosWithAuth()
@@ -43,7 +43,7 @@ function App() {
   }, [])
 
   return (
-    <div className="App" onEnter={() => !localStorage.token === null ? { isToken } : <Redirect to="/" />}>
+    <div className="App" /* please no more onEnter, just use the hook --igor */>
       <Switch>
         <Route exact path="/" render={props => <Home {...props} />} />
         <Route exact path="/about" render={props => <About {...props} />} />
