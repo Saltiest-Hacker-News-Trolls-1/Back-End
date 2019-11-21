@@ -50,13 +50,13 @@ class UserPfrofile extends React.Component {
                         // console.log('this.state', this.state)
                         this.state.hackers.map((item, index) => (
                             <Col xs="12" sm="10" md="6" lg="4" className=" mx-auto my-3">
-                                <Card key={index} style={{ backgroundColor: '#1569C7', color: "white", display: "flex", flexFlow: "row nowrap", alignItems: "center", justifyContent: "space-evenly" }} className="shadow">
-                                    <div className="counter-container mx-3" style={{ display: "flex", flexFlow: "column nowrap", justifyContent: "space-between", background: "inherit", color: "inherit" }}>
-                                        <h1 style={{ background: "inherit", color: "inherit" }}>&#9650;</h1>
-                                        <h2 style={{ background: "inherit", color: "inherit" }}>{item.negativity}</h2>
-                                        <h1 style={{ background: "inherit", color: "inherit" }}>&#9660;</h1>
+                                <Card key={index} style={{ backgroundColor: 'white', color: "black", display: "flex", flexFlow: "row nowrap", alignItems: "center", justifyContent: "space-between" }} className="shadow">
+                                    <div className="counter-container mx-4" style={{ display: "flex", flexFlow: "column nowrap", justifyContent: "space-between", background: "inherit", color: "inherit" }}>
+                                        <h1 style={{ background: "inherit", color: "blue", textAlign: "center" }}>&#9650;</h1>
+                                        <h2 style={{ background: "inherit", color: "black" }} className="mx-auto">{item.negativity}</h2>
+                                        <h1 style={{ background: "inherit", color: "red", textAlign: "center" }}>&#9660;</h1>
                                     </div>
-                                    <h2 className="mx-3" style={{ background: "inherit", color: "inherit" }}>Post made by user {item.id} </h2>
+                                    <h2 className="mx-auto" style={{ background: "inherit", color: "inherit" }}>Post made by user {item.id} </h2>
                                 </Card>
                             </Col>
                         ))
