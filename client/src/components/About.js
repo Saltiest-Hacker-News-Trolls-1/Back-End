@@ -33,7 +33,6 @@ const About = () => {
             <Card style={{ backgroundColor: '#1569C7', border: '2px solid white' }} className="saltyPeople mb-2 shadow-sm">Ramon Audain</Card>
             <h1 style={{marginTop:'10%', backgroundColor: '#1569C7', border: '2px solid white', width: '90%', fontSize: '2rem' }} className="saltyPeople mb-2 shadow-sm">Back-End:</h1>
             <Card style={{ backgroundColor: '#1569C7', border: '2px solid white' }} className="saltyPeople mb-2 shadow-sm">Igor Atakhanov</Card>
-            <Card style={{ backgroundColor: '#1569C7', border: '2px solid white' }} className="saltyPeople mb-2 shadow-sm">Francis Ngannou</Card>
             <h1 style={{marginTop:'10%', backgroundColor: '#1569C7', border: '2px solid white', width: '90%', fontSize: '2rem' }} className="saltyPeople mb-2 shadow-sm">Data Science:</h1>
             <Card style={{ backgroundColor: '#1569C7', border: '2px solid white' }} className="saltyPeople mb-2 shadow-sm">John D Rockefeller</Card>
             <Card style={{ backgroundColor: '#1569C7', border: '2px solid white' }} className="saltyPeople mb-2 shadow-sm">Chaung Hee</Card>

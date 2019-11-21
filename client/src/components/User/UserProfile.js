@@ -24,10 +24,16 @@ class UserProfile extends React.Component {
             { id: "dan", negativity: .5 },
             { id: "sally", negativity: -0.0 },
             { id: "john", negativity: -.5 },
-            { id: "dan", negativity: .5 },
+            { id: "dan", negativity: .512348 },
             { id: "sally", negativity: -0.0 },
             { id: "sally", negativity: -0.0 }]
         }
+        this.state.hackers.sort((element1, element2) => {
+            return (element1.negativity - element2.negativity)
+        });
+        this.state.hackers.map((element) => {
+            element.negativity = element.negativity.toFixed(1);
+        });
     }
 
     
@@ -38,7 +44,13 @@ class UserProfile extends React.Component {
             .get("/hackers/get")
             .then(response => {
                 console.log('loginRes', response.data);
-                // this.setState({ hackers: response.data })
+                this.setState({ hackers: response.data });
+                this.state.hackers.sort((element1, element2) => {
+                    return (element1.negativity - element2.negativity)
+                });
+                this.state.hackers.map((element) => {
+                    element.negativity = element.negativity.toFixed(1);
+                });
             })
             .catch(error => {
                 console.log(`Server responded with ${error.response.data.msg}`);
