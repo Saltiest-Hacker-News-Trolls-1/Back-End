@@ -1,10 +1,13 @@
+@import url('https://fonts.googleapis.com/css?family=Anton|Inconsolata&display=swap');
+
 *{
   background: #F8F5E1;
 }
 
 
 .bsos{
-  background: white;
+  background: #1569C7;
+  color: white;
   
 }
 .App-Wrap{
@@ -78,12 +81,22 @@ padding-bottom: 2%;
 margin: 1.5%;
 text-align: center;
 background: #F1EBEB;
+<<<<<<< HEAD
 border: 1px solid #FD8936;
 padding: 7%;
 width: 50%;
 box-sizing: border-box;
 /* font-size: calc(50px + 2vmin); */
 font-size: 1rem;
+=======
+color: white;
+padding: 2%;
+width: 30%;
+box-sizing: border-box;
+/* font-size: calc(50px + 2vmin); */
+font-size: .8rem;
+font-family: 'lucida console';
+>>>>>>> 6776068ff68f53f68b3af443c847b1bbf1da3d49
 }
 
 .title{
@@ -91,7 +104,7 @@ font-size: 1rem;
   align-items: center;
   justify-content: center;
   font-size: calc(60px + 2vmin);
-  font-family: 'Roboto';
+  font-family: 'Anton';
   
 }
 
@@ -176,6 +189,18 @@ font-size: 1rem;
 
   .saltyPeopleContainer{
     display: flex;
+<<<<<<< HEAD
     background: white;
     width: 100%;
+=======
+    background: #1569C7;
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  @media only screen and (min-width: 600px){
+    *{
+      background: white;
+    }
+>>>>>>> 6776068ff68f53f68b3af443c847b1bbf1da3d49
   }
