@@ -1,11 +1,12 @@
 import React from 'react';
 import logo from '../logo.svg';
-import {  Card } from 'reactstrap';
+import { Card } from 'reactstrap';
 import Navbar from './Navigation';
 
 const Home = () => {
   return (
     <div className="App-Wrap">
+
 
 <Navbar/>
       <Card style={{backgroundColor: '#F8F5E1'}} className="shadow-sm ">

@@ -17,6 +17,8 @@ function App() {
   console.log(localStorage.token)
   const history = useHistory()
 
+  // THis funciton should just check if there was no error, redirect to profile, which will
+  // make a call to the same /hackers/get route, but actually use the hackers data to populate state
   useEffect(() => {
     const token = localStorage.getItem("token")
     if (token) {
