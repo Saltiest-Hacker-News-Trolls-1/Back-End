@@ -1,6 +1,6 @@
 import React from 'react';
 import { Nav, NavItem, NavLink, } from 'reactstrap';
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
 const Navbar = (props) => {
 

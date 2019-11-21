@@ -9,7 +9,7 @@ const UserProfile = props => {
 
     useEffect(() => {
         props.get()
-    }, [])
+    }, [props])
 
     const save = item => {
         props.saveFav(item);
@@ -26,7 +26,7 @@ const UserProfile = props => {
                 <h1>Salty Hackers</h1>
                 <div>
                     {props.hackers.map(hacker =>
-                        <p key={hacker.id}>❤️<button onClick={save}></button>{hacker}</p>)}
+                        <span key={hacker.id} aria-label="heart" role="img">❤️<button onClick={save}></button>{hacker}</span>)}
                 </div>
             </div>
             <div>

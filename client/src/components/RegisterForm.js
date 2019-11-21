@@ -1,40 +1,10 @@
-import React, { useState /*, useEffect*/ } from "react";
+import React from "react";
 import { Card, CardBody, Button, Alert, Col } from 'reactstrap';
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
-import { useHistory } from "react-router-dom";
 
 const RegisterForm = ({ errors, touched, handleSubmit, handleChange, status }) => {
-
-    const history = useHistory();
-
-    // const [credentials, setCredentials] = useState({
-    //     username: "",
-    //     password: ""
-    // })
-
-    //const history = useHistory();
-
-
-    // const handleChange = e => {
-    //     setCredentials({
-    //         ...credentials,
-    //         [e.target.name]: e.target.value
-    //     })
-    // }
-
-    // const handleLogin = e => {
-    //     e.preventDefault();
-    //     axiosWithAuth()
-    //         .post("", credentials)
-    //         .then(res => {
-    //             console.log("login", res)
-    //             // localStorage.setItem("token", res.data)
-    //             // history.push("/protected")
-    //         })
-    //         .catch(err => console.log(err.response))
-    // }
 
     return (
         <div className="login-form my-3">
