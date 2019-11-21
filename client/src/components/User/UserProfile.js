@@ -35,10 +35,10 @@ class UserPfrofile extends React.Component {
             .get("/hackers/get")
             .then(response => {
                 console.log('loginRes', response.data);
-                response.data.map((element) => {
+                this.setState({ hackers: response.data });
+                this.state.hackers.map((element) => {
                     element.negativity = element.negativity.toFixed(1);
-                })
-                // this.setState({ hackers: response.data })
+                });
             })
             .catch(error => {
                 console.log(`Server responded with ${error.response.data.msg}`);
