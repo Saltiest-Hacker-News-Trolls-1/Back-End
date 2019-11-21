@@ -193,6 +193,39 @@ font-family: 'lucida console';
 
   }
 
+  .hacker-card{
+    border: 1px solid black;
+    width: 50%;
+    display: flex;
+    margin: 20px 0px;
+  }
+
+  .hacker-card p{
+    display: flex;
+    padding-right: 20px;
+    padding-left: 20px;
+ 
+  }
+
+  .hacker{
+    display: flex;
+    flex-direction: column;
+    
+    
+  }
+
+  .profile{
+   
+    width: 60%;
+    margin: auto;
+  }
+
+  .buttons{
+    text-align: center;
+    display: flex;
+    justify-content: space-evenly;
+  }
+  
   .titleWrap{
     background: white;
   }

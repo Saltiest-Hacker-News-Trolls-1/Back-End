@@ -95,3 +95,4 @@ const mapStateToProps = state => {
     }
 }
 export default connect(mapStateToProps, {get, saveFav, removeFav})(UserProfile);
+
