@@ -6,7 +6,7 @@ const RemoveFav = props => {
         <li>
             <button 
             onClick={() => props.remove(props.hacker)}
-            >💔</button>
+            ><span>💔</span></button>
             {props.hacker.name}
             {props.hacker.saltyness}
         </li>

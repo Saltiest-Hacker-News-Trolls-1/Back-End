@@ -33,6 +33,7 @@ const HackerReducer = (state=initialState, action) => {
                 isGetting: false,
                 error: action.payload
             }
+
         default:
             return state;
     }

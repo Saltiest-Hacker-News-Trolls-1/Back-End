@@ -5,14 +5,9 @@ import * as Yup from "yup";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { useHistory } from "react-router-dom";
 
-const LoginForm = ({ errors, touched, handleSubmit, handleChange, values }) => {
+const LoginForm = ({ errors, touched, handleSubmit, handleChange, values, status }) => {
 
-    // const [credentials, setCredentials] = useState({
-    //     username: "",
-    //     password: ""
-    // })
-
-    // const history = useHistory();
+    const history = useHistory();
 
 
     // const handleChange = e => {
@@ -55,6 +50,7 @@ const LoginForm = ({ errors, touched, handleSubmit, handleChange, values }) => {
                         </Form>
                     </CardBody>
                 </Card>
+                {!!status && <Alert color="danger" className="my-3">{`${status}`}</Alert>}
             </Col>
         </div>
     )
@@ -71,19 +67,20 @@ const FormikLoginForm = withFormik({
         username: Yup.string().required(`Please enter a username.`),
         password: Yup.string().required(`Please enter your password.`)
     }),
-    handleSubmit(values) {
+    handleSubmit(values, { props, setStatus }) {
         // let history = useHistory()
         // console.log(values)
+        const { history } = props;
         axiosWithAuth()
             .post("/user/login", values)
             .then(response => {
                 console.log('loginRes', response.data);
                 localStorage.setItem("token", response.data.token)
-                // history.push("/protected")
+                history.push("/protected")
             })
             .catch(error => {
                 console.log(`Server responded with ${error.response.data.msg}`);
-                // console.log('loginErr', error.body)
+                setStatus(error)
             });
     },
     handleChange(values, setValues) {
