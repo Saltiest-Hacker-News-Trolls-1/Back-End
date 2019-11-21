@@ -16,11 +16,14 @@ const { ensureAuthenticated } = require('./libs/users/middleware')
 // routes 
 app.use(express.static(path.resolve(__dirname, '..', 'client', 'build')));
 app.get('/', function(req, res) {
-  res.sendFile(path.resolve(__dirname, '..', 'client', 'build', 'index.html'));
+  return res.sendFile(path.resolve(__dirname, '..', 'client', 'build', 'index.html'));
 });
 app.post('/user/register', register);
 app.post('/user/login', login)
 app.get('/hackers/get', ensureAuthenticated, getHackers)
+app.get('/*', function(req, res) {
+  return res.sendFile(path.resolve(__dirname, '..', 'client', 'build', 'index.html'));
+});
 
 // error handling
 app.use((err, req, res, next) => {

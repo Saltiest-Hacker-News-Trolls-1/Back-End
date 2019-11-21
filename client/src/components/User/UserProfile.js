@@ -20,7 +20,7 @@ const UserProfile = props => {
     }
 
     return (
-        <>
+        <div>
             <UserNav />
             <div>
                 <h1>Salty Hackers</h1>
@@ -35,7 +35,7 @@ const UserProfile = props => {
                     <RemoveFavList remove={remove} favorites={props.favorite} />
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 
