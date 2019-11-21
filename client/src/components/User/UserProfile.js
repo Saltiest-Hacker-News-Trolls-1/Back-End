@@ -4,12 +4,30 @@ import { get } from "../../store/actions/AuthAction";
 import { connect } from "react-redux"
 import { saveFav, removeFav } from "../../store/actions/FavsAction";
 import RemoveFavList from "./RemoveFavList";
+import { axiosWithAuth } from '../../utils/axiosWithAuth';
+import { Route } from "react-router-dom";
+import ChangePassForm from "./ChangePassForm";
 
 const UserProfile = props => {
 
     useEffect(() => {
-        props.get()
+        props.get();
     }, [])
+
+    // const updatePass = e => {
+
+    //     e.preventDefault();
+
+    //     axiosWithAuth()
+    //         .put(`/user/changePass/${props.match.params.id}`, props.profile.password)
+    //         .catch(err => console.log(err.response))
+    // }
+
+    const delProfile = () =>{
+        axiosWithAuth()
+            .delete(`/user/deleteAccount/${props.match.params.id}`)
+            .catch(err => console.log(err.response))
+    }
 
     const save = item => {
         props.saveFav(item);
@@ -23,34 +41,39 @@ const UserProfile = props => {
         <div>
             <UserNav />
             <div>
+                <button onClick={delProfile}>Delete Profile</button>
+                <button onClick={()=><Route expact path="/change-pass/:id" render={props => (<ChangePassForm {...props} />)} />}>Change Password</button>
+            </div>
+            <div>
                 <h1>Salty Hackers</h1>
                 <div>
                     {props.hackers.map(hacker =>
-                        <p key={hacker.id}>❤️<button onClick={save}></button>{hacker}</p>)}
+                        <span key={hacker.id} aria-label="heart" role="img">❤️<button onClick={save}></button>{hacker}</span>)}
                 </div>
             </div>
             <div>
 
                 <div>
-                    <RemoveFavList remove={remove} favorites={props.favorite} />
+                    <RemoveFavList remove={remove} favorites={props.favorites} />
                 </div>
             </div>
         </div>
     )
 }
 
-const mapDispatchToProps = {
-    saveFav,
-    get,
-    removeFav
-}
+// const mapDispatchToProps = {
+//     saveFav,
+//     get,
+//     removeFav
+// }
 
 const mapStateToProps = state => {
-    console.log("state", state.hackers)
-    return {
+    console.log("state", state)
+    return{
         hackers: state.hackers,
-        favorites: state.favorites
+        favorites: state.favorites,
+        profile: state.id
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserProfile);
+export default connect(mapStateToProps, {get, saveFav, removeFav})(UserProfile);

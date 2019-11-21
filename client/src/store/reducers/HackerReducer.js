@@ -1,10 +1,16 @@
 import {START_GETTING, GET_SUCCESS, GET_FAILURE} from "../actions/AuthAction"
 
 const initialState = {
-    hackers: [{
-        name: "HackerMan",
-        saltyness: 9001
-        }],
+    hackers: [
+        {
+            name: "HackerMan",
+            saltyness: 9001
+        },
+        {
+            name: "Neo",
+            saltyness: -1
+        }
+    ],
     isGetting: false,
     error: null
 }
@@ -24,7 +30,7 @@ const HackerReducer = (state=initialState, action) => {
                 ...state,
                 isGetting: false,
                 error: null,
-                data: action.payload
+                hackers: action.payload
             }
         
         case GET_FAILURE:
@@ -33,6 +39,7 @@ const HackerReducer = (state=initialState, action) => {
                 isGetting: false,
                 error: action.payload
             }
+
         default:
             return state;
     }
