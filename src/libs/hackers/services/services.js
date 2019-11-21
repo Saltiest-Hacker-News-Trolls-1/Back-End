@@ -1,5 +1,5 @@
 const getTopMeanestHackers = db => async(x) => {
-    const topXHackers = await db.sequelize.query(`SELECT TOP ${x} users FROM ORDER BY DESC;`)
+    const topXHackers = await db.sequelize.query(`SELECT TOP ${x} users ORDER BY DESC;`)
     return topXHackers
 }
 
