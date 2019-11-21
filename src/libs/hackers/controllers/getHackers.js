@@ -1,3 +1,6 @@
+const { getTopMeanestHackers } = require('../services')
+
 module.exports = (req, res, next) => {
-    return res.json({ 'req.userID': req.userID })
+    const topHackers = getTopMeanestHackers(20)
+    return res.json(topHackers)
 }

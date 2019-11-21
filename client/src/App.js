@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import './App.css';
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Route, Switch, Redirect } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import FormikLoginForm from './components/LoginForm';
 import FormikRegisterForm from "./components/RegisterForm";
 import PrivateRoute from "./utils/PrivateRoute";
@@ -17,18 +17,6 @@ function App() {
   console.log(localStorage.token)
   const history = useHistory()
 
-  // const isLoggedIn = () => {
-  //   axiosWithAuth()
-  //     .get("/hackers/get")
-  //     .then(res => {
-  //       console.log("get hackers", res)
-  //       // localStorage.setItem("token", res.data.payload)
-  //       history.push("/protected")
-  //     })
-  //     .catch(err => console.log(err.response))
-  // }
-
-
   useEffect(() => {
     const token = localStorage.getItem("token")
     if (token) {
@@ -40,10 +28,10 @@ function App() {
         })
         .catch(err => console.log(err.response))
     }
-  }, [])
+  }, [history])
 
   return (
-    <div className="App" /* please no more onEnter, just use the hook --igor */>
+    <div className="App" /* please no more onEnter, just use the hook --igor */ /* what does this mean? --tanner */>
       <Switch>
         <Route exact path="/" render={props => <Home {...props} />} />
         <Route exact path="/about" render={props => <About {...props} />} />
@@ -53,8 +41,6 @@ function App() {
         <Route exact path="/login" render={props => (<><Navbar {...props} /> <FormikLoginForm {...props} /></>)} />
         <Route exact path="/register" render={props => (<><Navbar {...props} /> <FormikRegisterForm {...props} /></>)} />
       </Switch>
-
-      {/* other routes */}
     </div>
   );
 }

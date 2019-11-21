@@ -47,8 +47,8 @@ const UserProfile = props => {
             <div>
                 <h1>Salty Hackers</h1>
                 <div>
-                    {props.hackers.map(hacker => 
-                    <p key={hacker.id}><button onClick={save}><span>❤️</span></button>{hacker}</p>)}
+                    {props.hackers.map(hacker =>
+                        <span key={hacker.id} aria-label="heart" role="img">❤️<button onClick={save}></button>{hacker}</span>)}
                 </div>
             </div>
             <div>
