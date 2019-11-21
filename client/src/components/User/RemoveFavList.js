@@ -8,8 +8,8 @@ const RemoveFavList = props => {
 
     return(
         <div>
-            {/* <h1>Favorite Salty Hackers</h1>
-            {props.favorites.length ? (
+            <h1>Favorite Salty Hackers</h1>
+            {/* {props.favorites.length ? (
                 <ol>
                     {props.favorites.map(fav => {
                     <RemoveFav 
