@@ -10,9 +10,12 @@ const Home = () => {
 
       <Navbar />
       <Card style={{ backgroundColor: '#F8F5E1' }} className="shadow-sm ">
+        <div className="titleWrap">
         <div className="logo"><img src={logo} alt="logo" /></div>
         <h1 className="title">SALTIEST</h1>
         <h1 className="title">HACKER</h1>
+        <h1 className="title">NEWS</h1>
+        </div>
       </Card>
       <div className="saltyPeopleSection">
         <Card style={{ backgroundColor: '#1569C7' }} className="saltyPeopleBox mb-2 shadow-sm d-flex justify-content-center align-items-center">
@@ -29,8 +32,8 @@ const Home = () => {
             <Card style={{ backgroundColor: '#1569C7', border: '2px solid white' }} className="saltyPeople mb-2 shadow-sm">Francis Ngannou</Card>
           </div>
         </Card>
-        <Card style={{ backgroundColor: 'white' }} className="saltyPeopleBox mb-2 shadow-sm d-flex justify-content-center align-items-center">
-        <p style={{ backgroundColor: 'white' }} className="textBox">We measure the saltiness/negativity of your users, allowing you to filter out negativity form your social platform, and provide a more positive experience to your users. We also allow users on our map to vote on particular users, allowing a more fine grained selection process.</p>
+        <Card style={{ backgroundColor: 'white' }} className="saltyDescription mb-2 shadow-sm d-flex justify-content-center align-items-center">
+        <p style={{ backgroundColor: 'white' }} className="textBox">We measure the saltiness/negativity of your users, allowing you to filter out negativity form your social platform, and provide a more positive experience to your users. We also allow users on our map to vote on particular users, allowing a more fine grained selection process. Partake with us as we collectively prevent ourselves from smashing a monitor in cathartic rage.</p>
         </Card>
       </div>
     </div>
