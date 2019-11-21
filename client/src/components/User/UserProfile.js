@@ -12,7 +12,16 @@ class UserPfrofile extends React.Component {
     constructor() {
         super()
         this.state = {
-            hackers: []
+            hackers: [{ id: "john", negativity: -.5 },
+            { id: "dan", negativity: .5 },
+            { id: "sally", negativity: -0.0 },
+            { id: "john", negativity: -.5 },
+            { id: "dan", negativity: .5 },
+            { id: "sally", negativity: -0.0 },
+            { id: "john", negativity: -.5 },
+            { id: "dan", negativity: .5 },
+            { id: "sally", negativity: -0.0 },
+            { id: "sally", negativity: -0.0 }]
         }
     }
 
@@ -22,7 +31,7 @@ class UserPfrofile extends React.Component {
             .get("/hackers/get")
             .then(response => {
                 console.log('loginRes', response.data);
-                this.setState({ hackers: response.data })
+                // this.setState({ hackers: response.data })
             })
             .catch(error => {
                 console.log(`Server responded with ${error.response.data.msg}`);
