@@ -1,6 +1,6 @@
 const { getTopMeanestHackers } = require('../services')
 
-module.exports = (req, res, next) => {
-    const topHackers = getTopMeanestHackers(20)
+module.exports = async(req, res, next) => {
+    const topHackers = await getTopMeanestHackers(20)
     return res.json(topHackers)
 }
