@@ -9,7 +9,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // user made imports
-const { register, login, changePassword } = require('./libs/users/controllers')
+const { register, login, changePassword, deleteAccount } = require('./libs/users/controllers')
 const { getHackers } = require('./libs/hackers/controllers')
 const { ensureAuthenticated } = require('./libs/users/middleware')
 
@@ -21,6 +21,7 @@ app.get('/', function (req, res) {
 app.post('/user/register', register);
 app.post('/user/login', login)
 app.put('/user/changePass', ensureAuthenticated, changePassword)
+app.delete('/user/deleteAccount', ensureAuthenticated, deleteAccount)
 app.get('/hackers/get', ensureAuthenticated, getHackers)
 app.get('/*', function (req, res) {
   return res.sendFile(path.resolve(__dirname, '..', 'client', 'build', 'index.html'));

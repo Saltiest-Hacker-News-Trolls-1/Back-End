@@ -1,4 +1,4 @@
-const { encryptPassword, setUserPassword } = require('../services');
+const { deleteAccount } = require('../services');
 
 // get user by id,
 // take new passwod off of body, hash it
@@ -6,10 +6,8 @@ const { encryptPassword, setUserPassword } = require('../services');
 // 
 module.exports = async (req, res, next) => {
     try {
-        const { password } = req.body;
-        const newPassword = encryptPassword(password)
-        const userUpdated = setUserPassword(newPassword, req.userID)
-        return res.json(userUpdated)
+        const userDeleted = deleteAccount(req.userID)
+        return res.json(userDeleted)
         // const tryAgain = new Error("Try Again!")
         // tryAgain.httpStatusCode = 400
         // throw tryAgain
