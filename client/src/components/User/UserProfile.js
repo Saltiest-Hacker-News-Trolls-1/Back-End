@@ -11,7 +11,7 @@ import ChangePassForm from "./ChangePassForm";
 const UserProfile = props => {
 
     useEffect(() => {
-        props.get()
+        props.get();
     }, [])
 
     // const updatePass = e => {
