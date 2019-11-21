@@ -24,9 +24,12 @@ class UserPfrofile extends React.Component {
             { id: "sally", negativity: -0.0 },
             { id: "sally", negativity: -0.0 }]
         }
+        this.state.hackers.sort((element1, element2) => {
+            return (element1.negativity - element2.negativity)
+        });
         this.state.hackers.map((element) => {
             element.negativity = element.negativity.toFixed(1);
-        })
+        });
     }
 
     componentDidMount() {
@@ -36,6 +39,9 @@ class UserPfrofile extends React.Component {
             .then(response => {
                 console.log('loginRes', response.data);
                 this.setState({ hackers: response.data });
+                this.state.hackers.sort((element1, element2) => {
+                    return (element1.negativity - element2.negativity)
+                });
                 this.state.hackers.map((element) => {
                     element.negativity = element.negativity.toFixed(1);
                 });
