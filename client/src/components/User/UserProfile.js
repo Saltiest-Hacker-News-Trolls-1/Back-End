@@ -99,9 +99,7 @@ class UserProfile extends React.Component {
                     <Button color="info">Change Password</Button>
                     </Link>
                 </div>
-                <div>
-                    <Button onClick={this.saltiest}>The Saltiest</Button>
-                </div>
+                
                 <ul className="m-0 p-0" id="#hacker-list">
                     {
                         // console.log('this.state', this.state)
