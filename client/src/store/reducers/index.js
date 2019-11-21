@@ -6,6 +6,7 @@ import ProfileReducer from "./ProfileReducer"
 
 export default combineReducers({
     //AuthReducer,
+    hackers: [],
     FavsReducer,
     ProfileReducer
 })

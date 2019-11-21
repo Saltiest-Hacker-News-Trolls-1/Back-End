@@ -1,6 +1,5 @@
 const getTopMeanestHackers = db => async(x) => {
-    const topXHackers = await db.sequelize.query(`SELECT TOP ${x} users ORDER BY DESC;`)
-    return topXHackers
+    return [{id: "john", negativity: -.5}, {id: "dan", negativity: .5}, {id: "sally", negativity: -0.0}]
 }
 
 module.exports =(db) => ({
