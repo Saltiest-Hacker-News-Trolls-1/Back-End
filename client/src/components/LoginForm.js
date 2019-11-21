@@ -1,14 +1,10 @@
-import React, { /*useState , useEffect*/ } from "react";
+import React from "react";
 import { Card, CardBody, Button, Alert, Col } from 'reactstrap';
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
-import { useHistory } from "react-router-dom";
 
 const LoginForm = ({ errors, touched, handleSubmit, handleChange, values, status }) => {
-
-    const history = useHistory();
-
 
     // const handleChange = e => {
     //     setCredentials({
