@@ -51,9 +51,9 @@ class UserProfile extends React.Component {
 
 
     delProfile = () =>{
-        console.log(this.hackers.id)
+        console.log(this.state.hackers)
         axiosWithAuth()
-        .delete(`/user/deleteAccount/${this.props.match.params.id}`)
+        .delete(`/user/deleteAccount/`)
         .catch(err => console.log(err.response))
     }
     
