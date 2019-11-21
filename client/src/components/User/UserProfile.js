@@ -5,6 +5,8 @@ import { connect } from "react-redux"
 import { saveFav, removeFav } from "../../store/actions/FavsAction";
 import RemoveFavList from "./RemoveFavList";
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
+import { Route } from "react-router-dom";
+import ChangePassForm from "./ChangePassForm";
 
 const UserProfile = props => {
 
@@ -12,18 +14,18 @@ const UserProfile = props => {
         props.get()
     }, [])
 
-    const updatePass = e => {
+    // const updatePass = e => {
 
-        e.preventDefault();
+    //     e.preventDefault();
 
-        axiosWithAuth()
-            .put(``, props.profile.password)
-            .catch(err => console.log(err.response))
-    }
+    //     axiosWithAuth()
+    //         .put(`/user/changePass/${props.match.params.id}`, props.profile.password)
+    //         .catch(err => console.log(err.response))
+    // }
 
     const delProfile = () =>{
         axiosWithAuth()
-            .delete(``)
+            .delete(`/user/deleteAccount/${props.match.params.id}`)
             .catch(err => console.log(err.response))
     }
 
@@ -40,9 +42,7 @@ const UserProfile = props => {
             <UserNav />
             <div>
                 <button onClick={delProfile}>Delete Profile</button>
-                <button 
-                //onClick={}
-                >Update Password</button>
+                <button onClick={()=><Route expact path="/change-pass/:id" render={props => (<ChangePassForm {...props} />)} />}>Change Password</button>
             </div>
             <div>
                 <h1>Salty Hackers</h1>
@@ -61,11 +61,11 @@ const UserProfile = props => {
     )
 }
 
-const mapDispatchToProps = {
-    saveFav,
-    get,
-    removeFav
-}
+// const mapDispatchToProps = {
+//     saveFav,
+//     get,
+//     removeFav
+// }
 
 const mapStateToProps = state => {
     console.log("state", state)
@@ -76,4 +76,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserProfile);
+export default connect(mapStateToProps, {get, saveFav, removeFav})(UserProfile);
