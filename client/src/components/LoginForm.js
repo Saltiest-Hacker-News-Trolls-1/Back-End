@@ -5,26 +5,6 @@ import * as Yup from "yup";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 const LoginForm = ({ errors, touched, handleSubmit, handleChange, values, status }) => {
-
-    // const handleChange = e => {
-    //     setCredentials({
-    //         ...credentials,
-    //         [e.target.name]: e.target.value
-    //     })
-    // }
-
-    // const handleLogin = e => {
-    //     e.preventDefault();
-    //     axiosWithAuth()
-    //         .post("", credentials)
-    //         .then(res => {
-    //             console.log("login", res)
-    //             // localStorage.setItem("token", res.data)
-    //             // history.push("/protected")
-    //         })
-    //         .catch(err => console.log(err.response))
-    // }
-
     return (
         <div className="login-form my-3">
             <Col xs="12" md="8" lg="4" className="mx-auto">
@@ -64,8 +44,6 @@ const FormikLoginForm = withFormik({
         password: Yup.string().required(`Please enter your password.`)
     }),
     handleSubmit(values, { props, setStatus }) {
-        // let history = useHistory()
-        // console.log(values)
         const { history } = props;
         axiosWithAuth()
             .post("/user/login", values)
@@ -80,7 +58,6 @@ const FormikLoginForm = withFormik({
             });
     },
     handleChange(values, setValues) {
-        console.log(values)
         setValues({
             ...values,
             [values.target.name]: values.target.value
