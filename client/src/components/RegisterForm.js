@@ -91,7 +91,7 @@ const FormikRegisterForm = withFormik({
             .then(response => {
                 console.log(response);
                 localStorage.setItem("token", response.data)
-                history.push("/protected")
+                history.push("/login")
                 console.log(history);
 
             })

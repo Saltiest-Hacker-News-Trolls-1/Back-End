@@ -76,7 +76,7 @@ const FormikLoginForm = withFormik({
             .then(response => {
                 console.log('loginRes', response.data);
                 localStorage.setItem("token", response.data.token)
-                history.push("/protected")
+                history.push("/profile")
             })
             .catch(error => {
                 console.log(`Server responded with ${error.response.data.msg}`);
