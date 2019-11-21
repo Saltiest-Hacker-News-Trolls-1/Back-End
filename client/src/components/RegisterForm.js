@@ -54,7 +54,6 @@ const FormikRegisterForm = withFormik({
     handleSubmit(values, { props, setStatus }) {
         const { history } = props;
         console.log('submitted register');
-        console.log(props);
 
         axiosWithAuth()
             .post("/user/register", values)
@@ -62,7 +61,6 @@ const FormikRegisterForm = withFormik({
                 console.log(response);
                 localStorage.setItem("token", response.data)
                 history.push("/login")
-                console.log(history);
 
             })
             .catch(error => {
