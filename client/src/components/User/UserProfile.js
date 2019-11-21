@@ -12,18 +12,25 @@ import { Card, Col } from "reactstrap";
 class UserPfrofile extends React.Component {
     constructor() {
         super()
-        this.state = {
-            hackers: [{ id: "john", negativity: -.5 },
-            { id: "dan", negativity: .5 },
-            { id: "sally", negativity: -0.0 },
-            { id: "john", negativity: -.5 },
-            { id: "dan", negativity: .5 },
-            { id: "sally", negativity: -0.0 },
-            { id: "john", negativity: -.5 },
-            { id: "dan", negativity: .512348 },
-            { id: "sally", negativity: -0.0 },
-            { id: "sally", negativity: -0.0 }]
+        if(process.env.NODE_ENV === 'development') {
+            this.state = {
+                hackers: [{ id: "john", negativity: -.5 },
+                { id: "dan", negativity: .5 },
+                { id: "sally", negativity: -0.0 },
+                { id: "john", negativity: -.5 },
+                { id: "dan", negativity: .5 },
+                { id: "sally", negativity: -0.0 },
+                { id: "john", negativity: -.5 },
+                { id: "dan", negativity: .512348 },
+                { id: "sally", negativity: -0.0 },
+                { id: "sally", negativity: -0.0 }]
+            }
+        } else {
+            this.state = {
+                hackers: []
+            }
         }
+        
         this.state.hackers.map((element) => {
             element.negativity = element.negativity.toFixed(1);
         })
