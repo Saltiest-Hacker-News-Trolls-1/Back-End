@@ -1,3 +1,3 @@
 module.exports = (req, res, next) => {
-    return res.json({hackers: ":)"})
+    return res.json({ 'req.userID': req.userID })
 }

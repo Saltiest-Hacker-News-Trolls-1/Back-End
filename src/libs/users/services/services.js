@@ -53,6 +53,18 @@ const validateUser = UserModel => async (name, password) => {
   return payload;
 };
 
+const setUserPassword = async(password, id) => {
+  const foundUser = await getUserByID(id)
+  foundUser.password = password
+  await foundUser.save()
+  return foundUser
+}
+
+const deleteAccount = async(id) => {
+  const foundUser = getUserByID(id)
+  const userDeleted = await foundUser.destroy()
+  return userDeleted
+}
 
 const encodeToken = userID => {
   console.log('encodeToken userID', userID)
@@ -81,13 +93,15 @@ const decodeToken = (token, callback) => {
   }
 }
 
+
 module.exports = UserModel => ({
   saveUser: saveUser(UserModel),
   userExists: userExists(UserModel),
   encryptPassword: encryptPassword(UserModel),
   validateUser: validateUser(UserModel),
   getUserByID: getUserByID(UserModel),
-  encodeToken: encodeToken,
-  decodeToken: decodeToken,
-  // logOut: logoutUser(UserModel)
+  setUserPassword: setUserPassword,
+  encodeToken,
+  decodeToken,
+  deleteAccount
 });
