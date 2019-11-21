@@ -36,7 +36,7 @@ const ChangePassForm = ({ errors, touched, handleSubmit, handleChange, status })
     )
 }
 
-const FormikRegisterForm = withFormik({
+const FormikChangePassForm = withFormik({
 
     mapPropsToValues({ password }) {
         return {
@@ -70,4 +70,4 @@ const FormikRegisterForm = withFormik({
     }
 })(ChangePassForm)
 
-export default FormikRegisterForm;
+export default FormikChangePassForm;
