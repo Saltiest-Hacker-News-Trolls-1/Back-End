@@ -22,6 +22,14 @@ const About = () => {
           </div>
         </div>
       </Card>
+      <Card style={{ backgroundColor: '#EDFDFA' }} className="shadow-sm d-flex justify-content-center align-items-center">
+        <div className="saltText">
+          <div className="saltPile">
+            <p className="aboutText">We make it our goal to encapsulate the essence of developer rage, the very force that was vital in the making of this website. Here, you will find scores of recorded frustration for your admiration or entertainment.</p>
+            <p className="aboutText">[more sample text]</p>
+          </div>
+        </div>
+      </Card>
     </div>
   );
 };
