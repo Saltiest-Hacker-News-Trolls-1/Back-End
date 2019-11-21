@@ -7,6 +7,7 @@ import RemoveFavList from "./RemoveFavList";
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import { Route } from "react-router-dom";
 import ChangePassForm from "./ChangePassForm";
+import { Card, Col } from "reactstrap";
 
 class UserPfrofile extends React.Component {
     constructor() {
@@ -44,11 +45,20 @@ class UserPfrofile extends React.Component {
         return (
             <div>
                 <UserNav />
-                <ul>
+                <ul className="m-0 p-0">
                     {
                         // console.log('this.state', this.state)
                         this.state.hackers.map((item, index) => (
-                            <li key={index}>{item.id}</li>
+                            <Col xs="12" sm="10" md="6" lg="4" className=" mx-auto my-3">
+                                <Card key={index} style={{ backgroundColor: '#1569C7', color: "white", display: "flex", flexFlow: "row nowrap", alignItems: "center", justifyContent: "space-evenly" }} className="shadow">
+                                    <div className="counter-container mx-3" style={{ display: "flex", flexFlow: "column nowrap", justifyContent: "space-between", background: "inherit", color: "inherit" }}>
+                                        <h1 style={{ background: "inherit", color: "inherit" }}>&#9650;</h1>
+                                        <h2 style={{ background: "inherit", color: "inherit" }}>{item.negativity}</h2>
+                                        <h1 style={{ background: "inherit", color: "inherit" }}>&#9660;</h1>
+                                    </div>
+                                    <h2 className="mx-3" style={{ background: "inherit", color: "inherit" }}>Post made by user {item.id} </h2>
+                                </Card>
+                            </Col>
                         ))
                     }
 
