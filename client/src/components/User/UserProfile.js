@@ -20,10 +20,13 @@ class UserPfrofile extends React.Component {
             { id: "dan", negativity: .5 },
             { id: "sally", negativity: -0.0 },
             { id: "john", negativity: -.5 },
-            { id: "dan", negativity: .5 },
+            { id: "dan", negativity: .512348 },
             { id: "sally", negativity: -0.0 },
             { id: "sally", negativity: -0.0 }]
         }
+        this.state.hackers.map((element) => {
+            element.negativity = element.negativity.toFixed(1);
+        })
     }
 
     componentDidMount() {
@@ -32,7 +35,10 @@ class UserPfrofile extends React.Component {
             .get("/hackers/get")
             .then(response => {
                 console.log('loginRes', response.data);
-                // this.setState({ hackers: response.data })
+                this.setState({ hackers: response.data });
+                this.state.hackers.map((element) => {
+                    element.negativity = element.negativity.toFixed(1);
+                });
             })
             .catch(error => {
                 console.log(`Server responded with ${error.response.data.msg}`);
