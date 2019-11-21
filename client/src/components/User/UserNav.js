@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
 const UserNav = (props) => {
 
@@ -17,7 +17,6 @@ const UserNav = (props) => {
           <Link className="UserProfile" to="UserProfile">My Profile</Link>
         </div>
 
-
         <div>
           <Link to="/" className="Logout" onClick={handleLogout} >Logout</Link>
 
@@ -29,4 +28,4 @@ const UserNav = (props) => {
   )
 }
 
-export default UserNav
+export default withRouter(UserNav)
