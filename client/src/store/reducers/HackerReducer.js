@@ -16,7 +16,7 @@ const initialState = {
 }
 
 
-const HackerReducer = (state=initialState, action) => {
+const HackerReducer = (state=[], action) => {
     switch(action.type){
         case START_GETTING:
             return{
