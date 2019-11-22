@@ -6,16 +6,20 @@ const getTopHackers = db => async (x) => {
 }
 
 const getMeanestHackers = db => async()=>{
-    const meanHackers = await db.sequelize.query(`SELECT negativity, karma, commentcount, id  FROM users WHERE negativity IS NOT NULL ORDER BY negativity DESC LIMIT 10;`, {
-        type: db.sequelize.QueryTypes.SELECT,
-        replace:{
-            karma:"compoundkarma"
-        }
-    })
-    return meanHackers
+    try{
+        const meanHackers = await db.sequelize.query(`SELECT negativity, karma, commentcount, id  FROM users WHERE negativity IS NOT NULL ORDER BY negativity DESC LIMIT 10;`, {
+            type: db.sequelize.QueryTypes.SELECT,
+            
+        })
+        return meanHackers
+    } catch(e){
+        console.log('meanesterror', e)
+    }
+    
 }
 
 module.exports = (db) => ({
     getTopHackers: getTopHackers(db),
     getMeanestHackers: getMeanestHackers(db)
+    
 })
