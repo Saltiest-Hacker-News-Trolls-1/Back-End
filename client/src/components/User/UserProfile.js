@@ -62,6 +62,13 @@ class UserProfile extends React.Component {
                 // setStatus(erro/r)
             });
     }
+    truncateDecimals = (number, digits) => {
+        var multiplier = Math.pow(10, digits),
+            adjustedNum = number * multiplier,
+            truncatedNum = Math[adjustedNum < 0 ? 'ceil' : 'floor'](adjustedNum);
+
+        return truncatedNum / multiplier;
+    };
     delProfile = () => {
         console.log(this.state.hackers)
         axiosWithAuth()
@@ -90,7 +97,7 @@ class UserProfile extends React.Component {
                                 <Card key={index} style={{ backgroundColor: 'white', color: "black", display: "flex", flexFlow: "row nowrap", alignItems: "center", justifyContent: "space-between" }} className="shadow" >
                                     <div className="counter-container mx-4" style={{ display: "flex", flexFlow: "column nowrap", justifyContent: "space-between", background: "inherit", color: "inherit" }}>
                                         <h2 style={{ background: "inherit", color: "blue", textAlign: "center" }}>&#9650;</h2>
-                                        <h3 style={{ background: "inherit", color: "black" }} className="mx-auto">{item.negativity}</h3>
+                                        <h3 style={{ background: "inherit", color: "black" }} className="mx-auto">{this.truncateDecimals(item.negativity, 2)}</h3>
                                         <h2 style={{ background: "inherit", color: "red", textAlign: "center" }}>&#9660;</h2>
                                     </div>
                                     <h3 className="mx-auto" style={{ background: "inherit", color: "inherit" }}>{item.id} </h3>
