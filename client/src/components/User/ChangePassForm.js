@@ -52,10 +52,10 @@ const FormikChangePassForm = withFormik({
         console.log(props);
 
         axiosWithAuth()
-            .put(`/user/changePass/${props.match.params.id}`, values)
+            .put(`/user/changePass`, values)
             .then(response => {
                 console.log(response);
-                history.push(`/changePass/${props.match.params.id}`)
+                history.push(`/`)
             })
             .catch(error => {
                 console.log(`Server responded with ${error.response.data.msg}`);
