@@ -1,3 +1,4 @@
 module.exports = {
-    getHackers: require('./getHackers')
+    getHackers: require('./getHackers'),
+    getMeanestHackers: require('./getMeanestHackers')
 }

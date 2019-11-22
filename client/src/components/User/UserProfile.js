@@ -16,20 +16,30 @@ class UserProfile extends React.Component {
         super()
         if (process.env.NODE_ENV === 'development') {
             this.state = {
-                hackers: [{ id: "john", negativity: -.5 },
-                { id: "dan", negativity: .5 },
-                { id: "sally", negativity: -0.120390 },
-                { id: "john", negativity: -.5 },
-                { id: "dan", negativity: .52438 },
-                { id: "sally", negativity: -0.0 },
-                { id: "john", negativity: -.5 },
-                { id: "dan", negativity: .512348 },
-                { id: "sally", negativity: -0.0 },
-                { id: "sally", negativity: -1.00000000000000000000 }]
+                busyHackers: [{ id: "john", negativity: -.5, positivity: 0.5, commentcount: 25 },
+                { id: "dan", negativity: .5, positivity: 52438, commentcount: 78 },
+                { id: "sally", negativity: -0.120390, positivity: 0.0, commentcount: 1 },
+                { id: "john", negativity: -.5, positivity: -0.120390, commentcount: 23 },
+                { id: "dan", negativity: .52438, positivity: -1.00000000000000000000, commentcount: 43 },
+                { id: "sally", negativity: -0.0, positivity: -0.120390, commentcount: 560 },
+                { id: "john", negativity: -.5, positivity: 5, commentcount: 90 },
+                { id: "dan", negativity: .512348, positivity: 5, commentcount: 44 },
+                { id: "sally", negativity: 0.0, positivity: .52438, commentcount: 12 },
+                { id: "sally", negativity: -1.00000000000000000000, positivity: 1, commentcount: 41 }],
+                meanHackers: [{ id: "john", negativity: -.5, compoundkarma: 250, commentcount: 25 },
+                { id: "dan", negativity: .5, compoundkarma: 15, commentcount: 78 },
+                { id: "sally", negativity: -0.120390, compoundkarma: 10, commentcount: 1 },
+                { id: "john", negativity: -.5, compoundkarma: 300, commentcount: 23 },
+                { id: "dan", negativity: .52438, compoundkarma: 65, commentcount: 43 },
+                { id: "sally", negativity: -0.0, compoundkarma: 234, commentcount: 560 },
+                { id: "john", negativity: -.5, compoundkarma: 8, commentcount: 90 },
+                { id: "dan", negativity: .512348, compoundkarma: 234, commentcount: 44 },
+                { id: "sally", negativity: 0.0, compoundkarma: 456, commentcount: 12 },
+                { id: "sally", negativity: -1.00000000000000000000, compoundkarma: 5, commentcount: 41 }]
             }
         } else {
             this.state = {
-                hackers: []
+                busyHackers: []
             }
         }
         // this.state.hackers.sort((element1, element2) => {
@@ -44,22 +54,24 @@ class UserProfile extends React.Component {
 
 
     componentDidMount() {
-        console.log(this);
         axiosWithAuth()
-            .get("/hackers/get")
+            .get("/hackers/getBusy")
             .then(response => {
                 console.log('loginRes', response.data);
-                this.setState({ hackers: response.data });
-                this.state.hackers.sort((element1, element2) => {
-                    return (element1.negativity - element2.negativity)
-                });
-                this.state.hackers.map((element) => {
-                    element.negativity = element.negativity.toFixed(1);
-                });
+                this.setState({ busyHackers: response.data });
             })
             .catch(error => {
                 console.log(`Server responded with ${error.response.data.msg}`);
-                // setStatus(erro/r)
+            });
+
+        axiosWithAuth()
+            .get("/hackers/getMean")
+            .then(response => {
+                console.log('meanies', response.data);
+                this.setState({ meanHackers: response.data });
+            })
+            .catch(error => {
+                console.log(`Server responded with ${error.response.data.msg}`);
             });
     }
     truncateDecimals = (number, digits) => {
@@ -75,41 +87,84 @@ class UserProfile extends React.Component {
             .delete(`/user/deleteAccount/`)
             .catch(err => console.log(err.response))
     }
-    saltiest = () => {
-        const salt = document.querySelector("ul")
-        console.log([...salt.children].sort((a, b) => (b.negativity - a.negativity)))
-    }
+
     render() {
         return (
             <div>
                 <UserNav />
-
-                <div className="buttons">
-                    <Link to="/change">
-                        <Button color="info">Change Password</Button>
-                    </Link>
-                </div>
-                <ul className="m-0 p-0" id="#hacker-list">
-                    {
-                        // console.log('this.state', this.state)
-                        this.state.hackers.map((item, index) => (
-                            <Col xs="12" sm="10" md="6" lg="4" className=" mx-auto my-3">
-                                <Card key={index} style={{ backgroundColor: 'white', color: "black", display: "flex", flexFlow: "row nowrap", alignItems: "center", justifyContent: "space-between" }} className="shadow" >
-                                    <div className="counter-container mx-4" style={{ display: "flex", flexFlow: "column nowrap", justifyContent: "space-between", background: "inherit", color: "inherit" }}>
-                                        <h2 style={{ background: "inherit", color: "blue", textAlign: "center" }}>&#9650;</h2>
-                                        <h3 style={{ background: "inherit", color: "black" }} className="mx-auto">{this.truncateDecimals(item.negativity, 2)}</h3>
-                                        <h2 style={{ background: "inherit", color: "red", textAlign: "center" }}>&#9660;</h2>
+                <div className="hacker-container-container">
+                    <div className="hacker-choices">
+                        <span>Order this real data by meanest, then by least nice - our models are very sophisticated and don't simply inverse this kind of data!</span>
+                        <div className="hacker-choice-buttons">
+                            <button onClick={() => this.setState({ busyHackers: this.state.busyHackers.sort((a, b) => (b.negativity - a.negativity)) })}>Meanest</button>
+                            <button onClick={() => this.setState({ busyHackers: this.state.busyHackers.sort((a, b) => (a.positivity - b.positivity)) })}>Least Nice</button>
+                            <button onClick={() => this.setState({ busyHackers: this.state.busyHackers.sort((a, b) => (b.commentcount - a.commentcount)) })}>Busiest</button>
+                        </div>
+                    </div>
+                    <div className="labels-busy"><span>Saltyness</span><span>Positivity</span><span>Comments</span><span>Name</span></div>
+                    <div className="hackers-container">
+                        {
+                            this.state.busyHackers.map((item, index) => (
+                                <div className="hacker-row">
+                                    <div className="hacker-data">
+                                        <span>{this.truncateDecimals(item.negativity, 2)}</span>
                                     </div>
-                                    <h3 className="mx-auto" style={{ background: "inherit", color: "inherit" }}>{item.id} </h3>
-                                </Card>
-                            </Col>
+                                    <div className="hacker-data">
+                                        <span >{this.truncateDecimals(item.positivity, 2)}</span>
+                                    </div>
+                                    <div className="hacker-data">
+                                        <span >{item.commentcount}</span>
+                                    </div>
+                                    <div className="hacker-data">
+                                        <a target="_blank" className="hacker-link" href={"https://news.ycombinator.com/user?id=" + item.id}><span>{item.id} </span></a>
+                                    </div>
+                                </div>
+                            ))
+                        }
+                    </div>
+                </div>
+                <div className="hacker-choices">
+                    <span>These are the meanest, most salty hackers on hacker news.See how many upvoates they have! Then go and find them</span>
+                    <div className="hacker-choice-buttons">
+                        <button onClick={() => this.setState({ meanHackers: this.state.meanHackers.sort((a, b) => (b.negativity - a.negativity)) })}>Meanest</button>
+                        <button onClick={() => this.setState({ meanHackers: this.state.meanHackers.sort((a, b) => (a.commentcount - b.commentcount)) })}>Busiest</button>
+                        <button onClick={() => this.setState({ meanHackers: this.state.meanHackers.sort((a, b) => (b.compoundkarma - a.compoundkarma)) })}>Most Upvotes</button>
+                    </div>
+                </div>
+                <div className="labels-busy"><span>Saltyness</span><span>Upvotes</span><span>Comments</span><span>Name</span></div>
+
+                <div className="hackers-container">
+                    {
+                        this.state.meanHackers.map((item, index) => (
+                            <div className="hacker-row">
+                                <div className="hacker-data">
+                                    <span>{this.truncateDecimals(item.negativity, 2)}</span>
+                                </div>
+                                <div className="hacker-data">
+                                    <span >{item.compoundkarma}</span>
+                                </div>
+                                <div className="hacker-data">
+                                    <span >{item.commentcount}</span>
+                                </div>
+                                <div className="hacker-data">
+                                    <a target="_blank" className="hacker-link" href={"https://news.ycombinator.com/user?id=" + item.id}><span>{item.id} </span></a>
+                                </div>
+                            </div>
                         ))
                     }
-                </ul>
-                <div className="buttons">
-                    <Button color="danger" onClick={this.delProfile}>Delete Profile</Button>
+                </div>
+                <div className="profile-buttons">
+                    <div className="buttons">
+                        <Button color="danger" onClick={this.delProfile}>Delete Profile</Button>
+                    </div>
+                    <div className="buttons">
+                        <Link to="/change">
+                            <Button color="info">Change Password</Button>
+                        </Link>
+                    </div>
                 </div>
             </div>
+
         )
     }
 }
