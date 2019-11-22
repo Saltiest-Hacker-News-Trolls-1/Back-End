@@ -7,7 +7,8 @@ const { encryptPassword, setUserPassword } = require('../services');
 module.exports = async (req, res, next) => {
     try {
         const { password } = req.body;
-        const newPassword = encryptPassword(password)
+        console.log('changePasslala', password, req.userID)
+        const newPassword = await encryptPassword(password)
         const userUpdated = setUserPassword(newPassword, req.userID)
         return res.json(userUpdated)
         // const tryAgain = new Error("Try Again!")

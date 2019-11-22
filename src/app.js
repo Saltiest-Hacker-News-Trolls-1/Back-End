@@ -8,6 +8,7 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+console.log('nnnnnnnn', process.env.NODE_ENV)
 // user made imports
 const { register, login, changePassword, deleteAccount } = require('./libs/users/controllers')
 const { getHackers } = require('./libs/hackers/controllers')

@@ -53,8 +53,13 @@ const validateUser = UserModel => async (name, password) => {
   return payload;
 };
 
-const setUserPassword = async(password, id) => {
-  const foundUser = await getUserByID(id)
+const setUserPassword = UserModel => async(password, id) => {
+  const foundUser = await UserModel.findOne({
+    where: {
+      id
+    },
+  })
+  console.log('ggg', password)
   foundUser.password = password
   await foundUser.save()
   return foundUser
@@ -100,7 +105,7 @@ module.exports = UserModel => ({
   encryptPassword: encryptPassword(UserModel),
   validateUser: validateUser(UserModel),
   getUserByID: getUserByID(UserModel),
-  setUserPassword: setUserPassword,
+  setUserPassword: setUserPassword(UserModel),
   encodeToken,
   decodeToken,
   deleteAccount

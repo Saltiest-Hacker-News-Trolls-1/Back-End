@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Route, Switch } from "react-router-dom";
 import FormikLoginForm from './components/LoginForm';
 import FormikRegisterForm from "./components/RegisterForm";
+import FormikChangePassForm from "./components/User/ChangePassForm"
 import PrivateRoute from "./utils/PrivateRoute";
 import UserProfile from "./components/User/UserProfile";
 import Navbar from './components/Navigation';
@@ -42,6 +43,7 @@ function App() {
         </PrivateRoute>
         <Route exact path="/login" render={props => (<><Navbar {...props} /> <FormikLoginForm {...props} /></>)} />
         <Route exact path="/register" render={props => (<><Navbar {...props} /> <FormikRegisterForm {...props} /></>)} />
+        <Route exact path="/change" render={props => (<><Navbar {...props} /> <FormikChangePassForm {...props} /></>)} />
       </Switch>
     </div>
   );

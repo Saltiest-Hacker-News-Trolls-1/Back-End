@@ -85,7 +85,7 @@ class UserProfile extends React.Component {
                 <UserNav />
 
                 <div className="buttons">
-                    <Link to="/change-pass">
+                    <Link to="/change">
                         <Button color="info">Change Password</Button>
                     </Link>
                 </div>
@@ -113,7 +113,5 @@ class UserProfile extends React.Component {
         )
     }
 }
-
-
 
 export default UserProfile;
