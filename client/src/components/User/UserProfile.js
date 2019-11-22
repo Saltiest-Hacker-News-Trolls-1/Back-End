@@ -12,18 +12,18 @@ import { Card, Col } from "reactstrap";
 class UserPfrofile extends React.Component {
     constructor() {
         super()
-        if(process.env.NODE_ENV === 'development') {
+        if (process.env.NODE_ENV === 'development') {
             this.state = {
                 hackers: [{ id: "john", negativity: -.5 },
                 { id: "dan", negativity: .5 },
-                { id: "sally", negativity: -0.0 },
+                { id: "sally", negativity: -0.120390 },
                 { id: "john", negativity: -.5 },
-                { id: "dan", negativity: .5 },
+                { id: "dan", negativity: .52438 },
                 { id: "sally", negativity: -0.0 },
                 { id: "john", negativity: -.5 },
                 { id: "dan", negativity: .512348 },
                 { id: "sally", negativity: -0.0 },
-                { id: "sally", negativity: -0.0 }]
+                { id: "sally", negativity: -1.00000000000000000000 }]
             }
         } else {
             this.state = {
@@ -70,9 +70,9 @@ class UserPfrofile extends React.Component {
                             <Col xs="12" sm="10" md="6" lg="4" className=" mx-auto my-3">
                                 <Card key={index} style={{ backgroundColor: 'white', color: "black", display: "flex", flexFlow: "row nowrap", alignItems: "center", justifyContent: "space-between" }} className="shadow">
                                     <div className="counter-container mx-4" style={{ display: "flex", flexFlow: "column nowrap", justifyContent: "space-between", background: "inherit", color: "inherit" }}>
-                                        <h1 style={{ background: "inherit", color: "blue", textAlign: "center" }}>&#9650;</h1>
-                                        <h2 style={{ background: "inherit", color: "black" }} className="mx-auto">{item.negativity}</h2>
-                                        <h1 style={{ background: "inherit", color: "red", textAlign: "center" }}>&#9660;</h1>
+                                        <h2 style={{ background: "inherit", color: "blue", textAlign: "center" }}>&#9650;</h2>
+                                        <h3 style={{ background: "inherit", color: "black" }} className="mx-auto">{item.negativity}</h3>
+                                        <h2 style={{ background: "inherit", color: "red", textAlign: "center" }}>&#9660;</h2>
                                     </div>
                                     <h2 className="mx-auto" style={{ background: "inherit", color: "inherit" }}>Post made by user {item.id} </h2>
                                 </Card>
