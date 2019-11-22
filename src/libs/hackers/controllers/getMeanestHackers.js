@@ -1,7 +1,6 @@
 const { getMeanestHackers } = require('../services')
 
 module.exports = async (req, res, next) => {
-    console.log('hhh', meanestHackers)
 
     try {
         if (process.env.NODE_ENV === 'development') {
@@ -17,7 +16,8 @@ module.exports = async (req, res, next) => {
             { id: "sally", negativity: -1.00000000000000000000, compoundkarma: 5, commentcount: 41 }])
         }
         const meanestHackers = await getMeanestHackers()
-    
+        console.log('hhh', meanestHackers)
+
         return res.json(meanestHackers)
     } catch(e){
         console.log("hhhh", e)
