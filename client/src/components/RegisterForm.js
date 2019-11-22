@@ -59,7 +59,6 @@ const FormikRegisterForm = withFormik({
             .post("/user/register", values)
             .then(response => {
                 console.log(response);
-                localStorage.setItem("token", response.data)
                 history.push("/login")
 
             })

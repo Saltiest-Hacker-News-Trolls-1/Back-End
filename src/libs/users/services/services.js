@@ -43,7 +43,7 @@ const validateUser = UserModel => async (name, password) => {
     }
   });
   if (foundUser.length > 0) {
-    console.log('validateUser',password, foundUser[0].password)
+    console.log('validateUser', password, foundUser[0].password)
     const passwordsMatch = await compare(password, foundUser[0].password);
 
     if (passwordsMatch) {
@@ -53,15 +53,26 @@ const validateUser = UserModel => async (name, password) => {
   return payload;
 };
 
-const setUserPassword = async(password, id) => {
-  const foundUser = await getUserByID(id)
+const setUserPassword = UserModel => async (password, id) => {
+  const foundUser = await UserModel.findOne({
+    where: {
+      id
+    },
+  })
+  console.log('ggg', password)
   foundUser.password = password
   await foundUser.save()
   return foundUser
 }
 
-const deleteAccount = async(id) => {
-  const foundUser = getUserByID(id)
+const deleteAccount = (UserModel) => async (id) => {
+  id = parseInt(id, 10)
+  const foundUser = await UserModel.findOne({
+    where: {
+      id
+    },
+  })
+  console.log('zzz', foundUser)
   const userDeleted = await foundUser.destroy()
   return userDeleted
 }
@@ -100,8 +111,8 @@ module.exports = UserModel => ({
   encryptPassword: encryptPassword(UserModel),
   validateUser: validateUser(UserModel),
   getUserByID: getUserByID(UserModel),
-  setUserPassword: setUserPassword,
+  setUserPassword: setUserPassword(UserModel),
+  deleteAccount: deleteAccount(UserModel),
   encodeToken,
   decodeToken,
-  deleteAccount
 });

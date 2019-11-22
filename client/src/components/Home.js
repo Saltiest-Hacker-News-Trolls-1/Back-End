@@ -32,9 +32,9 @@ const Home = () => {
             <Card style={{ backgroundColor: '#1569C7', border: '2px solid white' }} className="saltyPeople mb-2 shadow-sm">Francis Ngannou</Card>
           </div>
         </Card>
-        <Card style={{ backgroundColor: 'white' }} className="saltyDescription mb-2 shadow-sm d-flex justify-content-center align-items-center">
-        <p style={{ backgroundColor: 'white' }} className="textBox">We measure the saltiness/negativity of your users, allowing you to filter out negativity form your social platform, and provide a more positive experience to your users. We also allow users on our map to vote on particular users, allowing a more fine grained selection process. Partake with us as we collectively prevent ourselves from smashing a monitor in cathartic rage.</p>
-        </Card>
+        
+        <p style={{ backgroundColor: 'white' }} className="textBox mb-2 shadow-sm d-flex justify-content-center align-items-center">We measure the saltiness/negativity of your users, allowing you to filter out negativity form your social platform, and provide a more positive experience to your users. We also allow users on our map to vote on particular users, allowing a more fine grained selection process. Partake with us as we collectively prevent ourselves from smashing a monitor in cathartic rage.</p>
+        
       </div>
     </div>
   );

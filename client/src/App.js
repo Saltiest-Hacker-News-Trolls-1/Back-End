@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Route, Switch } from "react-router-dom";
 import FormikLoginForm from './components/LoginForm';
 import FormikRegisterForm from "./components/RegisterForm";
+import FormikChangePassForm from "./components/User/ChangePassForm"
 import PrivateRoute from "./utils/PrivateRoute";
 import UserProfile from "./components/User/UserProfile";
 import Navbar from './components/Navigation';
@@ -16,7 +17,6 @@ import Home from './components/Home';
 function App() {
   console.log(localStorage.token)
   const history = useHistory()
-  console.log('NODE_ENV', process.env.NODE_ENV)
 
   // THis funciton should just check if there was no error, redirect to profile, which will
   // make a call to the same /hackers/get route, but actually use the hackers data to populate state
@@ -43,6 +43,7 @@ function App() {
         </PrivateRoute>
         <Route exact path="/login" render={props => (<><Navbar {...props} /> <FormikLoginForm {...props} /></>)} />
         <Route exact path="/register" render={props => (<><Navbar {...props} /> <FormikRegisterForm {...props} /></>)} />
+        <Route exact path="/change" render={props => (<><Navbar {...props} /> <FormikChangePassForm {...props} /></>)} />
       </Switch>
     </div>
   );
