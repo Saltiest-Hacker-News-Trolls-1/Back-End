@@ -26,16 +26,16 @@ class UserProfile extends React.Component {
                 { id: "dan", negativity: .512348, positivity: 5, commentcount: 44 },
                 { id: "sally", negativity: 0.0, positivity: .52438, commentcount: 12 },
                 { id: "sally", negativity: -1.00000000000000000000, positivity: 1, commentcount: 41 }],
-                meanHackers: [{ id: "john", negativity: -.5, compoundkarma: 250, commentcount: 25 },
-                { id: "dan", negativity: .5, compoundkarma: 15, commentcount: 78 },
-                { id: "sally", negativity: -0.120390, compoundkarma: 10, commentcount: 1 },
-                { id: "john", negativity: -.5, compoundkarma: 300, commentcount: 23 },
-                { id: "dan", negativity: .52438, compoundkarma: 65, commentcount: 43 },
-                { id: "sally", negativity: -0.0, compoundkarma: 234, commentcount: 560 },
-                { id: "john", negativity: -.5, compoundkarma: 8, commentcount: 90 },
-                { id: "dan", negativity: .512348, compoundkarma: 234, commentcount: 44 },
-                { id: "sally", negativity: 0.0, compoundkarma: 456, commentcount: 12 },
-                { id: "sally", negativity: -1.00000000000000000000, compoundkarma: 5, commentcount: 41 }]
+                meanHackers: [{ id: "john", negativity: -.5, karma: 250, commentcount: 25 },
+                { id: "dan", negativity: .5, karma: 15, commentcount: 78 },
+                { id: "sally", negativity: -0.120390, karma: 10, commentcount: 1 },
+                { id: "john", negativity: -.5, karma: 300, commentcount: 23 },
+                { id: "dan", negativity: .52438, karma: 65, commentcount: 43 },
+                { id: "sally", negativity: -0.0, karma: 234, commentcount: 560 },
+                { id: "john", negativity: -.5, karma: 8, commentcount: 90 },
+                { id: "dan", negativity: .512348, karma: 234, commentcount: 44 },
+                { id: "sally", negativity: 0.0, karma: 456, commentcount: 12 },
+                { id: "sally", negativity: -1.00000000000000000000, karma: 5, commentcount: 41 }]
             }
         } else {
             this.state = {
@@ -129,7 +129,7 @@ class UserProfile extends React.Component {
                     <div className="hacker-choice-buttons">
                         <button onClick={() => this.setState({ meanHackers: this.state.meanHackers.sort((a, b) => (b.negativity - a.negativity)) })}>Meanest</button>
                         <button onClick={() => this.setState({ meanHackers: this.state.meanHackers.sort((a, b) => (a.commentcount - b.commentcount)) })}>Busiest</button>
-                        <button onClick={() => this.setState({ meanHackers: this.state.meanHackers.sort((a, b) => (b.compoundkarma - a.compoundkarma)) })}>Most Upvotes</button>
+                        <button onClick={() => this.setState({ meanHackers: this.state.meanHackers.sort((a, b) => (b.karma - a.karma)) })}>Most Upvotes</button>
                     </div>
                 </div>
                 <div className="labels-busy"><span>Saltyness</span><span>Upvotes</span><span>Comments</span><span>Name</span></div>
@@ -142,7 +142,7 @@ class UserProfile extends React.Component {
                                     <span>{this.truncateDecimals(item.negativity, 2)}</span>
                                 </div>
                                 <div className="hacker-data">
-                                    <span >{item.compoundkarma}</span>
+                                    <span >{item.karma}</span>
                                 </div>
                                 <div className="hacker-data">
                                     <span >{item.commentcount}</span>
