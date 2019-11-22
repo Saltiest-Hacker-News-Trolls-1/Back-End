@@ -7,7 +7,7 @@ export const axiosWithAuth = () => {
 
 
     return axios.create({
-        baseURL: "",
+        baseURL: "http://165.227.23.50:8080",
         headers: {
             "Content-Type": "application/json",
             "Authorization": `${token}`
