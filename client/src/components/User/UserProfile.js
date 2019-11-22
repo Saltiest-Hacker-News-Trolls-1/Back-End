@@ -12,8 +12,6 @@ import { Card, Col, Button } from "reactstrap";
 
 
 class UserProfile extends React.Component {
-
-
     constructor() {
         super()
         if (process.env.NODE_ENV === 'development') {
@@ -37,13 +35,13 @@ class UserProfile extends React.Component {
         // this.state.hackers.sort((element1, element2) => {
         //     return (element1.negativity - element2.negativity)
         // });
-        
+
         // this.state.hackers.map((element) => {
         //     element.negativity = element.negativity.toFixed(1);
         // });
     }
 
-    
+
 
     componentDidMount() {
         console.log(this);
@@ -51,56 +49,43 @@ class UserProfile extends React.Component {
             .get("/hackers/get")
             .then(response => {
                 console.log('loginRes', response.data);
-                this.setState({ hackers: response.data });
-                this.state.hackers.sort((element1, element2) => {
-                    return (element1.negativity - element2.negativity)
+                this.setState({
+                    hackers: response.data.map((h) => {
+                        return { negativity: h.negativity.toFixed(2), id: h.id }
+                    })
                 });
-                this.state.hackers.map((element) => {
-                    element.negativity = element.negativity.toFixed(1);
-                });
+                // this.state.hackers.sort((element1, element2) => {
+                //     return (element1.negativity - element2.negativity)
+                // });
+                // this.state.hackers.map((element) => {
+                //     element.negativity = element.negativity.toFixed(1);
+                // });
             })
             .catch(error => {
                 console.log(`Server responded with ${error.response.data.msg}`);
                 // setStatus(erro/r)
             });
-
-        
     }
-
-
-
-    delProfile = () =>{
+    delProfile = () => {
         console.log(this.state.hackers)
         axiosWithAuth()
-        .delete(`/user/deleteAccount/`)
-        .catch(err => console.log(err.response))
+            .delete(`/user/deleteAccount/`)
+            .catch(err => console.log(err.response))
     }
-    
-
     saltiest = () => {
-        
         const salt = document.querySelector("ul")
-        // [...salt.children]
-        //     .sort((a,b) => (b.negativity - a.negativity))
-        //     .map(child => salt.appendChild(child))]
-        console.log([...salt.children].sort((a,b) => (b.negativity - a.negativity)))
-    }       
-
-
+        console.log([...salt.children].sort((a, b) => (b.negativity - a.negativity)))
+    }
     render() {
-
-
-    
         return (
             <div>
                 <UserNav />
 
                 <div className="buttons">
                     <Link to="/change-pass">
-                    <Button color="info">Change Password</Button>
+                        <Button color="info">Change Password</Button>
                     </Link>
                 </div>
-                
                 <ul className="m-0 p-0" id="#hacker-list">
                     {
                         // console.log('this.state', this.state)
@@ -112,23 +97,20 @@ class UserProfile extends React.Component {
                                         <h3 style={{ background: "inherit", color: "black" }} className="mx-auto">{item.negativity}</h3>
                                         <h2 style={{ background: "inherit", color: "red", textAlign: "center" }}>&#9660;</h2>
                                     </div>
-                                    <h2 className="mx-auto" style={{ background: "inherit", color: "inherit" }}>Post made by user {item.id} </h2>
+                                    <h3 className="mx-auto" style={{ background: "inherit", color: "inherit" }}>{item.id} </h3>
                                 </Card>
                             </Col>
                         ))
                     }
-
                 </ul>
-
                 <div className="buttons">
                     <Button color="danger" onClick={this.delProfile}>Delete Profile</Button>
                 </div>
-
             </div>
         )
     }
 }
- 
- 
+
+
 
 export default UserProfile;
