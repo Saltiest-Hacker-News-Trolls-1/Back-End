@@ -18,7 +18,8 @@ module.exports = async (req, res, next) => {
             // return res.status(400).json({ status: "Please log in'" });
         }
         console.log('tokenPayoad', payload.sub)
-        user = getUserByID(payload.sub)
+        user = {id:payload.sub}
+        // user = getUserByID(payload.sub)
     });
     if(user){
         req.userID = user.id

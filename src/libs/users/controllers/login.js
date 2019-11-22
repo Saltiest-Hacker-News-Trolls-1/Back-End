@@ -8,7 +8,6 @@ module.exports = async (req, res, next) => {
     const { username, password } = req.body;
     try {
         const validUser = await validateUser(username, password);
-        console.log('validUser', validUser)
         if (validUser) {
             const token = await encodeToken(validUser.id);
             return res.json({ token });
