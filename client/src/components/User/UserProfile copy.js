@@ -9,20 +9,20 @@ import { Route } from "react-router-dom";
 import ChangePassForm from "./ChangePassForm";
 
 
-const  = props => {
+const UserProfile = props => {
 
     useEffect(() => {
         props.get();
     }, [])
 
-    const updatePass = e => {
+    // const updatePass = e => {
 
-        e.preventDefault();
+    //     e.preventDefault();
 
-        axiosWithAuth()
-            .put(`/user/changePass/${props.match.params.id}`, props.profile.password)
-            .catch(err => console.log(err.response))
-    }
+    //     axiosWithAuth()
+    //         .put(`/user/changePass/${props.match.params.id}`, props.profile.password)
+    //         .catch(err => console.log(err.response))
+    // }
 
     const delProfile = () =>{
         axiosWithAuth()
@@ -30,18 +30,18 @@ const  = props => {
             .catch(err => console.log(err.response))
     }
 
-    const salty = []
+    // const salty = []
 
-    const saltiest = () => {
-        //salty.sort((a,b) => (b.saltyness - a.saltyness))
-        const salt = document.querySelector("#hacker-list");
+    // const saltiest = () => {
+    //     //salty.sort((a,b) => (b.saltyness - a.saltyness))
+    //     const salt = document.querySelector("#hacker-list");
 
-        // [...salt.children].sort((a,b) => (b.saltyness - a.saltyness).map(child => listenerCount.appendChild(child))
-    }
+    //     // [...salt.children].sort((a,b) => (b.saltyness - a.saltyness).map(child => listenerCount.appendChild(child))
+    // }
 
-    const needsSalt = () => {
-        salty.sort((a,b) => (a.saltyness - b.saltyness))
-    }
+    // const needsSalt = () => {
+    //     salty.sort((a,b) => (a.saltyness - b.saltyness))
+    // }
     
     useEffect(() => {
         axiosWithAuth()
@@ -79,17 +79,13 @@ const  = props => {
                 </div>
             </div>
             </div>
-        )
-
-
-
-    
+        )    
 }
 
 const mapStateToProps = state => {
     console.log("state", state)
     return{
-        hackers: state.hackers,
+        hackers: state.data,
         favorites: state.favorites,
         profile: state.id
     }
