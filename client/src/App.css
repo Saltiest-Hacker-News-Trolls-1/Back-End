@@ -327,7 +327,7 @@
 
 .hackers-container {
   margin: 0 auto;
-  width: 400px;
+  width: 600px;
   height: 600px;
   display: flex;
   flex-direction: column;
@@ -344,7 +344,7 @@
   justify-content: center;
   align-items: center;
   height: 50px;
-  width: 110px;
+  width: 140px;
   border-radius: 10px;
   background: #007bff;
   color: white;
@@ -371,7 +371,7 @@
 }
 
 .labels-busy{
-  width:400px;
+  width:550px;
   margin: 0 auto;
   display:flex;
   justify-content: space-around;
