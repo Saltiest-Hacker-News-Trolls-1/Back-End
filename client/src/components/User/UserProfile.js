@@ -18,7 +18,7 @@ class UserProfile extends React.Component {
             this.state = {
                 busyHackers: [{ id: "john", negativity: -.5, positivity: 0.5, commentcount: 25 },
                 { id: "dan", negativity: .5, positivity: 52438, commentcount: 78 },
-                { id: "sally", negativity: -0.120390, positivity: 0.0, commentcount: 1 },
+                { id: "sallywwwwwwwwwwww", negativity: -0.120390, positivity: 0.0, commentcount: 1 },
                 { id: "john", negativity: -.5, positivity: -0.120390, commentcount: 23 },
                 { id: "dan", negativity: .52438, positivity: -1.00000000000000000000, commentcount: 43 },
                 { id: "sally", negativity: -0.0, positivity: -0.120390, commentcount: 560 },

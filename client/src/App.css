@@ -348,6 +348,7 @@
   border-radius: 10px;
   background: #007bff;
   color: white;
+  overflow: auto;
 }
 
 .hacker-data > span {
