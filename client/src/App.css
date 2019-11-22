@@ -344,11 +344,10 @@
   justify-content: center;
   align-items: center;
   height: 50px;
-  width: 90px;
+  width: 110px;
   border-radius: 10px;
   background: #007bff;
   color: white;
-  overflow: auto;
 }
 
 .hacker-data > span {
