@@ -43,7 +43,7 @@ const validateUser = UserModel => async (name, password) => {
     }
   });
   if (foundUser.length > 0) {
-    console.log('validateUser',password, foundUser[0].password)
+    console.log('validateUser', password, foundUser[0].password)
     const passwordsMatch = await compare(password, foundUser[0].password);
 
     if (passwordsMatch) {
@@ -53,7 +53,7 @@ const validateUser = UserModel => async (name, password) => {
   return payload;
 };
 
-const setUserPassword = UserModel => async(password, id) => {
+const setUserPassword = UserModel => async (password, id) => {
   const foundUser = await UserModel.findOne({
     where: {
       id
@@ -65,8 +65,14 @@ const setUserPassword = UserModel => async(password, id) => {
   return foundUser
 }
 
-const deleteAccount = async(id) => {
-  const foundUser = getUserByID(id)
+const deleteAccount = (UserModel) => async (id) => {
+  id = parseInt(id, 10)
+  const foundUser = await UserModel.findOne({
+    where: {
+      id
+    },
+  })
+  console.log('zzz', foundUser)
   const userDeleted = await foundUser.destroy()
   return userDeleted
 }
@@ -106,7 +112,7 @@ module.exports = UserModel => ({
   validateUser: validateUser(UserModel),
   getUserByID: getUserByID(UserModel),
   setUserPassword: setUserPassword(UserModel),
+  deleteAccount: deleteAccount(UserModel),
   encodeToken,
   decodeToken,
-  deleteAccount
 });
