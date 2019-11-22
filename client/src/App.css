@@ -104,9 +104,11 @@ font-family: 'lucida console';
 }
 
 .textBox{
+  width: 90%;
+  padding: 5%;
+      
+  margin: 2% 0  15% 0;
   
-  margin: 5% 0  15% 0;
-  width: 75%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -277,10 +279,8 @@ padding-bottom: 2%;
     }
 
     .textBox{
-      padding: 0%;
-      width: 100%;
-      padding-left:2%;
-      padding-right: 2%;
+      width: 50%;
+  padding: 3%;
       font-size: 1rem;
     }
 
@@ -302,13 +302,19 @@ padding-bottom: 2%;
 
     .saltText{
       width: 80%;
-      margin: 0%;
+      padding-bottom: 1%;
+      padding-top: 1%;
     }
     .saltPile{
       width: 100%;
+      margin-top: 0%;
+      margin-bottom:0%;
     }
 
-.saltWrap{
-  padding: -20%;
-}
+    .saltyPeopleBoxWrap{
+      margin-Top: 2%;
+       width: 50%;
+        margin-Left: 25%;
+    }
+
   }

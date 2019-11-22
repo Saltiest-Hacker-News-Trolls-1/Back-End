@@ -15,18 +15,18 @@ const About = () => {
         <div style={{ backgroundColor: 'white' }} className="saltShaker"><img src={saltShaker} alt="saltShaker" />
         </div>
       </Card>
-      <div className="d-flex align-items-center justify-content-center">
-      <Card style={{ backgroundColor: '#F8F5E1', width: '50%' }} className="saltWrap d-flex justify-content-center align-items-center">
-        <div className="saltText">
+      
+      <div  className="saltWrap d-flex justify-content-center align-items-center">
+        <div className="saltText shadow-sm">
           <div className="saltPile">
             <p className="aboutText">We make it our goal to encapsulate the essence of developer rage, the very force that was vital in the making of this website. Here, you will find scores of recorded frustration for your admiration or entertainment.</p>
             <p className="aboutText">Along side with our developers is that which they bear fruit: their SALT. </p>
           </div>
           
         </div>
-      </Card>
       </div>
-      <div style={{marginTop: '8%'}} className="d-flex justify-content-center align-items-center">
+    
+      <div className="saltyPeopleBoxWrap d-flex justify-content-center align-items-center">
       <Card style={{ backgroundColor: '#1569C7', width: '75%' }} className="saltyPeopleBox mb-2 shadow-sm d-flex justify-content-center align-items-center">
           <h1 className="bsos">Salty Developers: </h1>
           <div style={{ marginTop:'20%'}} className="saltyPeopleContainer">
