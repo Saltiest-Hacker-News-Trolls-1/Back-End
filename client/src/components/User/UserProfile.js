@@ -34,12 +34,13 @@ class UserProfile extends React.Component {
                 hackers: []
             }
         }
-        this.state.hackers.sort((element1, element2) => {
-            return (element1.negativity - element2.negativity)
-        });
-        this.state.hackers.map((element) => {
-            element.negativity = element.negativity.toFixed(1);
-        });
+        // this.state.hackers.sort((element1, element2) => {
+        //     return (element1.negativity - element2.negativity)
+        // });
+        
+        // this.state.hackers.map((element) => {
+        //     element.negativity = element.negativity.toFixed(1);
+        // });
     }
 
     
