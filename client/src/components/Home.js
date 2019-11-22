@@ -22,14 +22,10 @@ const Home = () => {
           <h1 className="bsos">The blue screen of SALT: </h1>
           <div className="saltyPeopleContainer">
 
-            <Card style={{ backgroundColor: '#1569C7', border: '2px solid white' }} className="saltyPeople mb-2 shadow-sm">Chaung Hee</Card>
-            <Card style={{ backgroundColor: '#1569C7', border: '2px solid white' }} className="saltyPeople mb-2 shadow-sm">Francis Ngannou</Card>
-            <Card style={{ backgroundColor: '#1569C7', border: '2px solid white' }} className="saltyPeople mb-2 shadow-sm">John D Rockefeller</Card>
-            <Card style={{ backgroundColor: '#1569C7', border: '2px solid white' }} className="saltyPeople mb-2 shadow-sm">Chaung Hee</Card>
-            <Card style={{ backgroundColor: '#1569C7', border: '2px solid white' }} className="saltyPeople mb-2 shadow-sm">Francis Ngannou</Card>
-            <Card style={{ backgroundColor: '#1569C7', border: '2px solid white' }} className="saltyPeople mb-2 shadow-sm">John D Rockefeller</Card>
-            <Card style={{ backgroundColor: '#1569C7', border: '2px solid white' }} className="saltyPeople mb-2 shadow-sm">Chaung Hee</Card>
-            <Card style={{ backgroundColor: '#1569C7', border: '2px solid white' }} className="saltyPeople mb-2 shadow-sm">Francis Ngannou</Card>
+            <Card style={{ backgroundColor: '#1569C7', border: '2px solid white' }} className="saltyPeople mb-2 shadow-sm"><p style={{background: '#1569C7'}}>▲Francis Ngannou</p></Card>
+            <Card style={{ backgroundColor: '#1569C7', border: '2px solid white' }} className="saltyPeople mb-2 shadow-sm"><p style={{background: '#1569C7'}}>Francis Ngannou</p>100000</Card>
+            <Card style={{ backgroundColor: '#1569C7', border: '2px solid white' }} className="saltyPeople mb-2 shadow-sm"><p style={{background: '#1569C7'}}>Francis Ngannou</p></Card>
+            <Card style={{ backgroundColor: '#1569C7', border: '2px solid white' }} className="saltyPeople mb-2 shadow-sm"><p style={{background: '#1569C7'}}>Francis Ngannou</p></Card>
           </div>
         </Card>
         

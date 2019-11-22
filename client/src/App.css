@@ -5,6 +5,7 @@
 }
 
 
+
 .bsos{
   background: #1569C7;
   color: white;
@@ -79,18 +80,24 @@ padding-bottom: 2%;
 
 }
 
+
+.cardContents{
+  text-decoration: underline;
+}
+
 .saltyPeople{
 margin: 1.5%;
 text-align: center;
 background: #F1EBEB;
-
+text-decoration-line: underline;
 color: white;
 padding: 2%;
-width: 30%;
+width: 50%;
 box-sizing: border-box;
 /* font-size: calc(50px + 2vmin); */
 font-size: .8rem;
 font-family: 'lucida console';
+text-decoration-line: 'underline'
 }
 
 .title{
