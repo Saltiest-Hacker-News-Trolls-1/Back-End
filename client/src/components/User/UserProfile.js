@@ -39,7 +39,8 @@ class UserProfile extends React.Component {
             }
         } else {
             this.state = {
-                busyHackers: []
+                busyHackers: [],
+                meanHackers: []
             }
         }
         // this.state.hackers.sort((element1, element2) => {
