@@ -8,22 +8,25 @@ const About = () => {
     <div className="App-Wrap">
 
       <Navbar />
-      <Card style={{ backgroundColor: '#F8F5E1' }} className="shadow-sm ">
-        <h1 className="aboutTitle1">WHY</h1>
-        <h1 className="aboutTitle2">SO</h1>
-        <h1 className="aboutTitle3">SALTY?</h1>
-        <div className="saltShaker"><img src={saltShaker} alt="saltShaker" />
+      <Card style={{ backgroundColor: 'white' }} className="aboutWrap shadow-sm ">
+        <h1 style={{ backgroundColor: 'white' }} className="aboutTitle1">WHY</h1>
+        <h1 style={{ backgroundColor: 'white' }} className="aboutTitle2">SO</h1>
+        <h1 style={{ backgroundColor: 'white' }} className="aboutTitle3">SALTY?</h1>
+        <div style={{ backgroundColor: 'white' }} className="saltShaker"><img src={saltShaker} alt="saltShaker" />
         </div>
       </Card>
-      <Card style={{ backgroundColor: '#F8F5E1' }} className="shadow-sm d-flex justify-content-center align-items-center">
-        <div className="saltText">
+      
+      <div  className="saltWrap d-flex justify-content-center align-items-center">
+        <div className="saltText shadow-sm">
           <div className="saltPile">
             <p className="aboutText">We make it our goal to encapsulate the essence of developer rage, the very force that was vital in the making of this website. Here, you will find scores of recorded frustration for your admiration or entertainment.</p>
             <p className="aboutText">Along side with our developers is that which they bear fruit: their SALT. </p>
           </div>
+          
         </div>
-      </Card>
-      <div style={{marginTop: '8%'}} className="d-flex justify-content-center align-items-center">
+      </div>
+    
+      <div className="saltyPeopleBoxWrap d-flex justify-content-center align-items-center">
       <Card style={{ backgroundColor: '#1569C7', width: '75%' }} className="saltyPeopleBox mb-2 shadow-sm d-flex justify-content-center align-items-center">
           <h1 className="bsos">Salty Developers: </h1>
           <div style={{ marginTop:'20%'}} className="saltyPeopleContainer">

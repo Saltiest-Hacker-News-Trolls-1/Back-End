@@ -104,15 +104,19 @@ font-family: 'lucida console';
 }
 
 .textBox{
+  width: 90%;
+  padding: 5%;
+      
+  margin: 2% 0  15% 0;
   
-  margin: 5% 0  15% 0;
-  width: 75%;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 1.2rem;
   font: 'lucida console';
 }
+
+
 
 .aboutTitle{
   margin-top: 5% ;
@@ -123,12 +127,14 @@ font-family: 'lucida console';
   display:flex;
   align-items: center;
   justify-content: center;
+  font: 'lucida console'; 
 }
 
 .aboutTitle2{
   display:flex;
   align-items: center;
   justify-content: center;
+  font: 'lucida console'; 
 }
 
 .aboutTitle3{
@@ -136,6 +142,7 @@ font-family: 'lucida console';
   display:flex;
   align-items: center;
   justify-content: center;
+  font: 'lucida console'; 
 }
 
 .saltShaker{
@@ -240,6 +247,10 @@ padding-top: 2%;
 padding-bottom: 2%;
   }
 
+  .saltShaker img{
+    background: white;
+  }
+
   @media only screen and (min-width: 600px){
 .titleWrap{
   display: flex;
@@ -268,10 +279,42 @@ padding-bottom: 2%;
     }
 
     .textBox{
-      padding: 0%;
-      width: 100%;
-      padding-left:2%;
-      padding-right: 2%;
+      width: 50%;
+  padding: 3%;
       font-size: 1rem;
     }
+
+
+    .aboutWrap{
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+
+    }
+
+    .saltShaker{
+      width: 5%;
+      margin: 0%;
+      margin-right: 40%;
+      margin-top: -5%;
+      background: white;
+    }
+
+    .saltText{
+      width: 80%;
+      padding-bottom: 1%;
+      padding-top: 1%;
+    }
+    .saltPile{
+      width: 100%;
+      margin-top: 0%;
+      margin-bottom:0%;
+    }
+
+    .saltyPeopleBoxWrap{
+      margin-Top: 2%;
+       width: 50%;
+        margin-Left: 25%;
+    }
+
   }
