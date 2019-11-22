@@ -72,18 +72,24 @@
   padding-bottom: 2%;
 }
 
-.saltyPeople {
-  margin: 1.5%;
-  text-align: center;
-  background: #f1ebeb;
 
-  color: white;
-  padding: 2%;
-  width: 30%;
-  box-sizing: border-box;
-  /* font-size: calc(50px + 2vmin); */
-  font-size: 0.8rem;
-  font-family: "lucida console";
+.cardContents{
+  text-decoration: underline;
+}
+
+.saltyPeople{
+margin: 1.5%;
+text-align: center;
+background: #F1EBEB;
+text-decoration-line: underline;
+color: white;
+padding: 2%;
+width: 50%;
+box-sizing: border-box;
+/* font-size: calc(50px + 2vmin); */
+font-size: .8rem;
+font-family: 'lucida console';
+text-decoration-line: 'underline'
 }
 
 .title {
@@ -248,7 +254,8 @@
   }
 
   .saltyPeople {
-    width: 18%;
+    padding: 1%;
+    width: 14%;
     font-size: 1rem;
   }
   .saltyDescription {
