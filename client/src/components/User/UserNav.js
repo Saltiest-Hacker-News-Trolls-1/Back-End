@@ -14,10 +14,6 @@ const UserNav = (props) => {
 
       <div className="Nav">
         <div>
-          <Link className="UserProfile" to="UserProfile">My Profile</Link>
-        </div>
-
-        <div>
           <Link to="/" className="Logout" onClick={handleLogout} >Logout</Link>
 
         </div>
