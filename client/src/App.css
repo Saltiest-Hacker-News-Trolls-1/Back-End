@@ -254,7 +254,8 @@ text-decoration-line: 'underline'
   }
 
   .saltyPeople {
-    width: 18%;
+    padding: 1%;
+    width: 14%;
     font-size: 1rem;
   }
   .saltyDescription {
